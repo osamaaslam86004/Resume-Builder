@@ -1,0 +1,490 @@
+body {
+    background: rgb(204, 204, 204);
+    font-family: 'Arial', sans-serif;
+    margin: 0 auto;
+    /* border: 1px solid red; */
+    width: 21cm;
+    height: 29.7cm;
+}
+
+body p,
+a {
+    font-size: 12px;
+}
+
+
+page[size="A4"] {
+    background: white;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 0.5cm;
+    box-shadow: 0 0 0.5cm rgba(0, 0, 0, 0.5);
+
+}
+
+@media print {
+
+    body,
+    page[size="A4"] {
+        margin: 0;
+        box-shadow: 0;
+    }
+}
+
+
+.container {
+    width: 100%;
+    height: 29.7cm;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    /* border: 1px solid red; */
+}
+
+.left-container {
+    /* border: 1px solid black; */
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: lightgray;
+    margin: 0;
+    padding: 0;
+
+}
+
+.person-image {
+    /* border: 1px solid red; */
+    border-radius: 50%;
+    height: 5.0cm;
+    width: 5.0cm;
+    overflow: hidden;
+
+}
+
+.person-image img {
+    height: 5.0cm;
+    width: 5.0cm;
+    object-fit: cover;
+}
+
+.name-occupation {
+    height: auto;
+    width: auto;
+    margin-left: 5px;
+    /* border: 1px solid red; */
+
+}
+
+.name-occupation p {
+    font-weight: 600;
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-size: 1.2rem;
+    /* border: 1px solid red; */
+}
+
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 5.0cm;
+    width: auto;
+    margin-left: 5px;
+    margin-top: 50px;
+    /* border: 1px solid red; */
+}
+
+.contact-heading-container {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.contact-heading-container h5 {
+    text-align: center;
+    /* border: 1px solid red; */
+}
+
+.contact-container {
+    width: 100%;
+    height: auto;
+}
+
+
+.cnic,
+.address {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    /* border: 1px solid red; */
+
+}
+
+.cnic img,
+.address img {
+    margin-right: 3px;
+    width: 15px;
+    height: 15px;
+    /* border: 1px solid red; */
+}
+
+.cnic-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 1.0cm;
+    width: 100%;
+}
+
+
+.address-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    height: 1.0cm;
+    width: 100%;
+    height: auto;
+}
+
+
+.social-media-contact {
+    height: auto;
+    width: 100%;
+    font-size: small;
+    /* border: 1px solid black; */
+}
+
+.facebook,
+.linkedin,
+.github,
+.gmail,
+.twitterHandler {
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 5px;
+}
+
+.facebook-png,
+.linkedin-png,
+.github-png,
+.gmail-png,
+.twitter-png {
+    height: auto;
+    width: auto;
+}
+
+.facebook-png img,
+.linkedin-png img,
+.github-png img,
+.gmail-png img,
+.twitter-png img {
+    object-fit: cover;
+    overflow: hidden;
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+}
+
+
+.facebook-id,
+.linkedin-id,
+.github-id,
+.gmail-id,
+.twitter-id {
+    width: auto;
+    height: auto;
+    margin-left: 3px;
+}
+
+.facebook-id p,
+.linkedin-id p,
+.github-id p,
+.gmail p,
+.twitter-id-path-name {
+    margin: 0;
+}
+
+.right-container {
+    height: 10%;
+    width: 100%;
+}
+
+
+.section {
+    height: auto;
+    width: auto;
+    margin-bottom: 10px;
+    /* border: 1px solid red; */
+}
+
+.programming-language-container {
+    height: 100%;
+    width: 100%;
+}
+
+
+.front-end,
+.backend {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.heading-name {
+    width: 16.66%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.heading-name p {
+    font-weight: 400;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.front-end-languages,
+.backend-languages {
+    width: 83.34%;
+    height: 100%;
+}
+
+.front-end-languages p,
+.backend-languages p {
+    width: 100%;
+    height: 100%;
+}
+
+.skill-and-divider,
+.experience-and-divider,
+.projects-and-divider,
+.education-and-divider,
+.publications-and-divider {
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid grey;
+
+}
+
+
+
+.skills-container {
+    width: 100%;
+    height: auto;
+    /* border: 1px solid red; */
+    margin-bottom: 15px;
+}
+
+
+
+.skills-container .skill {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* border: 1px solid red; */
+
+}
+
+.skill p {
+    margin: 0;
+    width: 45%;
+    height: auto;
+    /* border: 1px solid red; */
+}
+
+.skill .progress-container {
+    width: 48%;
+    height: 50%;
+    background-color: #f3f3f3;
+    /* border: 1px solid red; */
+}
+
+.progress-bar {
+    font-size: 8px;
+    width: 10%;
+    height: 20%;
+    background-color: #4caf50;
+    text-align: center;
+    color: white;
+}
+
+
+.experience-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.company-location-date {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.company-name,
+.company-location {
+    width: 32.5%;
+    height: auto;
+}
+
+.company-name p {
+    margin: 0;
+    text-align: center;
+    /* border: 1px solid red; */
+}
+
+.company-location {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid red; */
+
+}
+
+.company-location img,
+.start-end-date img {
+    overflow: hidden;
+    object-fit: cover;
+    height: 15px;
+    width: 15px;
+    /* border: 1px solid red; */
+}
+
+.company-location p {
+    margin: 0;
+    text-align: center;
+}
+
+.start-end-date {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 33.33%;
+    height: 100%;
+    /* border: 1px solid red; */
+}
+
+
+
+.start-end-date p {
+    margin: 0;
+    padding-top: 2px;
+    text-align: center;
+    color: #555;
+}
+
+
+.job-accomplishment {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+}
+
+.accomplishment-heading {
+    padding: 0;
+    /* border: 1px solid black; */
+}
+
+
+.accomplishment {
+    margin: 0;
+    /* border: 1px solid black; */
+}
+
+.project-name-and-url {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.project-name {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.project-url {
+    width: 100%;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.education-container p {
+    margin: 0;
+}
+
+.publications-container {
+    width: 100%;
+    height: auto;
+    /* border: 1px solid red; */
+}
+
+.journal-date {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: auto;
+    /* border: 1px solid red; */
+}
+
+.publication-journal {
+    width: 75%;
+    height: auto;
+    /* border: 1px solid red; */
+
+}
+
+.publication-year {
+    width: 25%;
+    height: auto;
+    /* border: 1px solid red; */
+}
+
+.publication-name {
+    width: 100%;
+    height: auto;
+    /* border: 1px solid red; */
+}
+
+.publication-name p {
+    width: 100%;
+    height: 100%;
+    /* border: 1px solid red; */
+}
+
+.author-journal-date .publications-name p,
+.publications-journal p,
+.publications-year p {
+    margin: 0;
+}

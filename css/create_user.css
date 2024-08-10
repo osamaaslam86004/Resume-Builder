@@ -1,0 +1,43 @@
+.demo-section-crud-user {
+    height: 550px;
+    width: 1350px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: rgb(131, 58, 180);
+    background: -moz-linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#833ab4", endColorstr="#fcb045", GradientType=1);
+}
+
+
+.demo-section-crud-user .crud-user-form {
+
+    height: 350px;
+    width: 550px;
+    margin-right: 200px;
+
+}
+
+.demo-section-crud-user .crud-user-form .form-group label {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    transform-style: preserve-3d;
+    text-shadow: 2px 2px 0 #ccc, 4px 4px 0 #999;
+    perspective: 1000px;
+}
+
+.demo-section-crud-user .crud-user-form .form-group .email_help {
+    font-size: 18px;
+    transform-style: preserve-3d;
+
+}
+
+.demo-section-crud-user .crud-user-form .form_button {
+    margin-top: 32px;
+    width: 100%;
+
+}

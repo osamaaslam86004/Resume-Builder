@@ -1,0 +1,80 @@
+.demo-section-crud-user {
+    height: 550px;
+    width: 1350px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    background: rgb(131, 58, 180);
+    background: -moz-linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(253, 29, 29, 1) 50%, rgba(252, 176, 69, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#833ab4", endColorstr="#fcb045", GradientType=1);
+}
+
+.demo-section-crud-user .d-form {
+
+    height: 350px;
+    width: 550px;
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotateZ(-30deg) rotateY(-45deg);
+}
+
+.demo-section-crud-user .d-form .text-d {
+    font-size: 72px;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 2px 2px 0 #ccc, 4px 4px 0 #999;
+    transform-style: preserve-3d;
+}
+
+
+.demo-section-crud-user .d-form-form {
+
+    height: 350px;
+    width: 750px;
+
+
+}
+
+.d-form-form .form-group input {
+    height: 60px;
+    width: 75%;
+    font-family: "Source Sans 3", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+    font-size: larger;
+}
+
+
+
+
+.d-form-form .form-group label {
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    transform-style: preserve-3d;
+    text-shadow: 2px 2px 0 #ccc, 4px 4px 0 #999;
+    perspective: 1000px;
+}
+
+/* .d-form-form .is-staff-check label {
+    font-size: large;
+    font-weight: bold;
+    margin-left: 18px;
+}
+
+.d-form-form .is-staff-check input {
+    width: 18px;
+    height: 18px;
+} */
+
+.crud-user-form .form_button {
+    width: 75%;
+    margin-bottom: 50px;
+
+}
