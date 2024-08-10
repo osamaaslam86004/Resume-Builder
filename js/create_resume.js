@@ -82,11 +82,11 @@ function submitPersonalInfoForm(getformData, userData, tokensData) {
                         reject(new Error('Server error for /resume/api/get-personal-info-data/'));
                     } else if (response.status === 401) {
                         return response.json().then(data => {
-                            throw new Error(`${data} for /resume/api/get-personal-info-data/`);
+                            reject(new Error(`${data} for /resume/api/get-personal-info-data/`));
                         });
                     } else {
                         return response.json().then(data => {
-                            throw new Error(`${data} for /resume/api/get-personal-info-data/`);
+                            reject(new Error(`${data} for /resume/api/get-personal-info-data/`));
                         });
                     }
                 }
