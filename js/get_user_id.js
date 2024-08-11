@@ -47,6 +47,10 @@ async function Get_User_Details_Form(event) {
     let data = Object.fromEntries(formData.entries());
     console.log("form dictionary--------:", data)
 
+    // Storing The Password in MyNameSpace object For Future Use
+    MyNamespace.password = data.password
+    console.log("user password", MyNamespace.password)
+
     // SEND A API REQUEST TO CREATE A USER
     let apiUrl = 'https://osamaaslam.pythonanywhere.com/api/auth/get-api-user-id-for-user/';
 

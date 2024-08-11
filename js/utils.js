@@ -1,5 +1,7 @@
 // utils.js
 const MyNamespace = {
+    password: "",
+
     getPersonalInfoForm: function () {
 
         const personalinfoContainer = document.getElementById('personal-info-container');
@@ -17,7 +19,7 @@ const MyNamespace = {
         form.disabled = true;
 
         let formData = {};
-        const inputs = personalinfoContainer.querySelectorAll('input', 'textarea')
+        const inputs = personalinfoContainer.querySelectorAll('input, textarea')
         inputs.forEach(input => {
             if (input.name == 'linkedin') {
                 formData[input.name] = `https://www.linkedin.com/in/${input.value}/`
@@ -44,7 +46,7 @@ const MyNamespace = {
         let educationformData = {};
         for (educationTemplate of educationContainer.children) {
 
-            let educationformInputs = educationTemplate.querySelectorAll('input', 'textarea')
+            let educationformInputs = educationTemplate.querySelectorAll('input, textarea')
             educationformInputs.forEach(input => {
                 if (input.type === 'date') {
                     educationformData[input.name] = formatDate(input.value);
@@ -63,7 +65,7 @@ const MyNamespace = {
 
         // Add the input,textarea value to the formData under the "education" dictionary
         let jobformData = {};
-        const jobformInputs = jobContainer.querySelectorAll('input', 'textarea')
+        const jobformInputs = jobContainer.querySelectorAll('input, textarea')
         jobformInputs.forEach(input => {
             if (input.type === 'date') {
                 jobformData[input.name] = formatDate(input.value);
@@ -155,6 +157,8 @@ const MyNamespace = {
         return formData;
     },
 
+    // Clone Of Entire Form With Input Values
+    // To Display As A Preview
     getClonePersonalInfoForm: function () {
         const personalinfoContainer = document.getElementById('personal-info-container');
         const overviewContainer = document.getElementById('overview-container');
@@ -171,7 +175,7 @@ const MyNamespace = {
 
         // Clone and append Personal-Info-form-Container, disable inputs of all types
         review_List.append(personalinfoContainer.cloneNode(true));
-        let personalinfoInputs = review_List.querySelectorAll('input', 'textarea')
+        let personalinfoInputs = review_List.querySelectorAll('input, textarea')
         personalinfoInputs.forEach(input => {
             input.disabled = true
         });
@@ -312,7 +316,7 @@ const MyNamespace = {
         // Prepare the data object
         let data = {
             email: userData.email,
-            password: 'doe1122334455!'
+            password: MyNamespace.password
         };
 
         // Create the Request parameters

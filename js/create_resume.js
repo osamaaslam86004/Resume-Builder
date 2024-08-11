@@ -13,8 +13,6 @@ var checkCookie = function () {
 
         if (!(_.isEqual(last_userCredentials_value, current_userCredentials_value))
             && !(_.isEqual(last_tokens_value, current_tokens_value))) {
-            // console.log(last_tokens_value);
-            // console.log(last_userCredentials_value)
 
             alert("You are Logged-Out, Please Login!")
             window.location.href = "read_user.html"
@@ -39,7 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Call Backend API to submit the form
         submitPersonalInfoForm(getformData, last_userCredentials_value, last_tokens_value)
             .then(data => {
-                console.log('response data in Submit form', data)
+                // console.log('response data in Submit form', data)
+                window.location.href = 'template.html'
             })
             .catch(error => {
                 console.error('Error details here:', error);
