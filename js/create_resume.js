@@ -1,6 +1,6 @@
 // 'static' memory between function calls
-let last_userCredentials_value = MyNamespace.getCookieValue('userCredential');
-let last_tokens_value = MyNamespace.getCookieValue('tokens');
+var last_userCredentials_value = MyNamespace.getCookieValue('userCredential');
+var last_tokens_value = MyNamespace.getCookieValue('tokens');
 
 // Periodic Polling 
 // To Check Cookies Value Are Not Changed
@@ -13,8 +13,8 @@ var checkCookie = function () {
 
         if (!(_.isEqual(last_userCredentials_value, current_userCredentials_value))
             && !(_.isEqual(last_tokens_value, current_tokens_value))) {
-            console.log(last_tokens_value);
-            console.log(last_userCredentials_value)
+            // console.log(last_tokens_value);
+            // console.log(last_userCredentials_value)
 
             alert("You are Logged-Out, Please Login!")
             window.location.href = "read_user.html"
@@ -32,12 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         e.target.disabled = true;
 
-        let userData = MyNamespace.getCookieValue('userCredentials');
-        let tokensData = MyNamespace.getCookieValue('tokens');
+        let getformData = MyNamespace.getPersonalInfoForm();
+        getformData = dateInputToEmptyString(getformData);
+        console.log('form data settings dates', getformData)
 
-        let getformdata = MyNamespace.getPersonalInfoForm();
         // Call Backend API to submit the form
-        submitPersonalInfoForm(getformdata, userData, tokensData)
+        submitPersonalInfoForm(getformData, last_userCredentials_value, last_tokens_value)
             .then(data => {
                 console.log('response data in Submit form', data)
             })
@@ -57,6 +57,7 @@ function submitPersonalInfoForm(getformData, userData, tokensData) {
     return new Promise((resolve, reject) => {
         // Prepare the data object
         getformData['user_id'] = userData.id
+        console.log('user id in form', getformData['user_id'])
 
         // Create the Request parameters
         const apiUrl = 'https://osamaaslam.pythonanywhere.com/resume/api/get-personal-info-data/';
@@ -64,29 +65,28 @@ function submitPersonalInfoForm(getformData, userData, tokensData) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                Accept: 'application/json',
                 "Authorization": `Bearer ${tokensData.access}`
             },
             body: JSON.stringify(getformData),
         };
-        console.log('request parameneter ------------ :', requestOptions)
-        console.log('Authorization ------------ :', requestOptions.headers.Authorization)
+        console.log('Authorization ------------ :', requestOptions.Authorization)
+        console.log('body ------------ :', requestOptions.body)
 
         // Call the API
         fetch(apiUrl, requestOptions)
             .then(response => {
                 if (!response.ok) {
                     if (response.status === 404) {
-                        reject(new Error('Data not found /resume/api/get-personal-info-data/'));
+                        reject(new Error('Data not found'));
                     } else if (response.status === 500) {
-                        reject(new Error('Server error for /resume/api/get-personal-info-data/'));
+                        reject(new Error(`Server Error${response.status}`));
                     } else if (response.status === 401) {
                         return response.json().then(data => {
-                            reject(new Error(`${data} for /resume/api/get-personal-info-data/`));
+                            reject(new Error(data));
                         });
                     } else {
                         return response.json().then(data => {
-                            reject(new Error(`${data} for /resume/api/get-personal-info-data/`));
+                            reject(new Error(data));
                         });
                     }
                 }
@@ -96,8 +96,7 @@ function submitPersonalInfoForm(getformData, userData, tokensData) {
                 // Store the JSON response in a cookie
                 console.log('response data before creating Resume cookie-------', data)
                 let cookieValue = encodeURIComponent(JSON.stringify(data));
-                document.cookie = `resume=${cookieValue}; path=/; max-age=3600000; secure; SameSite=Strict`;
-                console.log('Document cookie after setting:', document.cookie);
+                document.cookie = `resume = ${cookieValue}; path = /; max-age=3600000; secure; SameSite=Strict`;
                 resolve(data);  // Resolve the promise with the token data
             })
             .catch(error => {
@@ -108,4 +107,27 @@ function submitPersonalInfoForm(getformData, userData, tokensData) {
 }
 
 
+// Set the Date Inputs's in YYYY-MM-DD (server-side format)
+function dateInputToEmptyString(getformData) {
+    // Check and convert education dates
+    for (let education of getformData.education) {
+        if (education.education_start_date === 'NaN-NaN-NaN') {
+            education.education_start_date = '';
+        }
+        if (education.education_end_date === 'NaN-NaN-NaN') {
+            education.education_end_date = '';
+        }
+        education = null;
+    }
 
+    // Check and convert job dates
+    let job = getformData.job;
+    if (job.job_start_date === 'NaN-NaN-NaN') {
+        job.job_start_date = '';
+    }
+    if (job.job_end_date === 'NaN-NaN-NaN') {
+        job.job_end_date = '';
+    }
+
+    return getformData;
+}
