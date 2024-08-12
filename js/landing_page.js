@@ -5,7 +5,7 @@ const tokens_cookieValue = MyNamespace.getCookieValue('tokens');
 document.addEventListener('DOMContentLoaded', function (e) {
 
     // Attach event listener to the "Build Resume" link
-    let build_resume = document.getElementById('post-resume');
+    let build_resume = document.getElementById('get-resume-template');
     build_resume.addEventListener('click', buildResume);
 
     // Attach event listener to the "Login User" link
@@ -25,22 +25,38 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
 
 
-function buildResume(event) {
+async function buildResume(event) {
     event.preventDefault();
     if ((userData_cookieValue == null) || (userData_cookieValue == '')) {
         window.location.href = 'create_user.html';
-    } else if (((userData_cookieValue != null) && (userData_cookieValue == '')) && ((tokens_cookieValue != null) && (tokens_cookieValue == ''))) {
-        MyNamespace.getTokens(userData_cookieValue).then(response_status_code => {
-            if (response_status_code == '200') {
-                window.location.href = 'personalinfo.html';
-            } else if (response_status_code == '401') {
-                window.location.href = 'read_user.html';
-            } else {
-                alert('Something Went Wrong, Try Again!')
-            }
-        });
+
     } else {
-        window.location.href = "personalinfo.html"
+        if (((userData_cookieValue != null) && (userData_cookieValue != ''))) {
+
+            if (((tokens_cookieValue != null) && (tokens_cookieValue != ''))) {
+
+                //  Call The API To List All Resumes For User
+                let response = await MyNamespace.getAllResumesForLoggedInUser(userData_cookieValue.id, tokens_cookieValue);
+                try {
+                    if ((response != null) && (response != '')) {
+                        window.location.href = 'template.html'
+                    } else {
+                        alert('You Have Not Created Resume, Please Create First!')
+                    }
+                }
+                catch (e) {
+                    if (e.name == '500') {
+                        window.location.href = 'index.html'
+                    } else {
+                        console.log(e.name, e.message)
+                    }
+                }
+
+            } else {
+                alert("Not Logged-In, Please Logged-In First!")
+                window.location.href = 'read_user.html';
+            }
+        }
     }
 };
 

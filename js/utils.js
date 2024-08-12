@@ -455,28 +455,35 @@ const MyNamespace = {
         });
     },
 
+    getAllResumesForLoggedInUser: async function (user_id, tokens_data) {
 
-    displayJsonInNewWindow: function (jsonData) {
-        if (!jsonData) {
-            console.error('No JSON data to display');
-            return;
-        }
-        let jsonString = JSON.stringify(jsonData, null, 2);
-        document.write('<html><body><pre>' + jsonString + '</pre></body></html>');
-    },
+        // Create the Request parameters
+        const apiUrl = `https://osamaaslam.pythonanywhere.com/resume/get-personal-info-data-for-user/?=${user_id}`;
+        let requestOptions = {
+            method: 'GET',
+            headers: {
+                "Authorization": `Bearer ${tokens_data.access}`
+            },
+        };
 
-    render_Response_get_user_id: function (json_response_data, response) {
-        let responseArray = [];
-        for (let key in json_response_data) {
-            if (json_response_data.hasOwnProperty(key)) {
-                // responseArray.push(`${key}: ${json_response_data[key].join(', ')}`);
-                responseArray.push(`${key}: ${json_response_data[key]}`);
+        // Call the API
+        let response = await fetch(apiUrl, requestOptions)
+        let data = await response.json();
+        try {
+            if (!response.ok) {
+                let e = new Error();
+                e.name = response.status.toString();
+                e.message = data
+                throw e
             }
+            console.log('response data in Submit form', data)
+            return data
         }
-        responseArray.push(`status: ${response.status}`);
-        alert(responseArray.join('\n'));
-        return `${responseArray.join('\n')}`
-    }
+        catch (error) {
+            console.error(error);
+            throw error
+        };
+    },
 };
 
 
