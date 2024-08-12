@@ -1,5 +1,5 @@
 const userCredentials = MyNamespace.getCookieValue('userCredential');
-// Since userCredentials is prevent, get the tokens and redirect the user
+// Since userCredentials is present, get the tokens and redirect the user
 // to Create Resume Builder page
 getTokensForUser(userCredentials);
 
@@ -48,7 +48,7 @@ async function Get_User_Details_Form(event) {
     console.log("form dictionary--------:", data)
 
     // Storing The Password in MyNameSpace object For Future Use
-    MyNamespace.password = data.password
+    PasswordNamespace.password = data.password
     console.log("user password", MyNamespace.password)
 
     // SEND A API REQUEST TO CREATE A USER

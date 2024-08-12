@@ -1,6 +1,10 @@
 // utils.js
-const MyNamespace = {
+
+var PasswordNamespace = {
     password: "",
+}
+
+const MyNamespace = {
 
     getPersonalInfoForm: function () {
 
@@ -316,8 +320,10 @@ const MyNamespace = {
         // Prepare the data object
         let data = {
             email: userData.email,
-            password: MyNamespace.password
+            password: PasswordNamespace.password
         };
+
+        console.log('data before token request', data)
 
         // Create the Request parameters
         let apiUrl = 'https://osamaaslam.pythonanywhere.com/api/auth/token/';
@@ -325,7 +331,6 @@ const MyNamespace = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                Accept: 'application/json'
             },
             body: JSON.stringify(data),
         };
