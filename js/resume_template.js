@@ -1,3 +1,6 @@
+import { PasswordNamespace } from "js/utils.js";
+console.log("user password", PasswordNamespace.password)
+
 document.addEventListener('DOMContentLoaded', async function () {
     // Ensure resume is populated before proceeding
     try {

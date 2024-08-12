@@ -1,8 +1,3 @@
-const userCredentials = MyNamespace.getCookieValue('userCredential');
-// Since userCredentials is present, get the tokens and redirect the user
-// to Create Resume Builder page
-getTokensForUser(userCredentials);
-
 // Add eventListner's to form 'Submit' button
 // and 'Create User' link tag in <nav> bar
 document.addEventListener('DOMContentLoaded', function (e) {
@@ -16,22 +11,33 @@ document.addEventListener('DOMContentLoaded', function (e) {
     create_user_element.addEventListener('click', event => {
         Create_User(event);
     });
+
+    // Since userCredentials is present, get the tokens and redirect the user
+    // to Create Resume Builder page
+    const userCredentials = MyNamespace.getCookieValue('userCredential');
+    getTokensForUser(userCredentials);
+
 });
 
 async function getTokensForUser(userCredentials) {
     // Append EventListener to the Submit button
     if ((userCredentials != null) && (userCredentials != '')) {
 
-        let response_status = await MyNamespace.getTokens(userCredentials);
-        if (response_status == '404') {
-            alert('You have not created account!')
-            window.location.href = 'create_user.html'
-        } else if (response_status == '200') {
-            // if status 200
-            alert('You are Logged-In!');
-            window.location.href = 'personalinfo.html'
-        } else {
-            alert(`${response_status}` + `gettokensForUser`)
+        tokenData = MyNamespace.getCookieValue('tokens')
+
+        if ((tokenData == null) && (tokenData == '')) {
+
+            let response_status = await MyNamespace.getTokens(userCredentials);
+            if (response_status == '404') {
+                alert('You have not created account!')
+                window.location.href = 'create_user.html'
+            } else if (response_status == '200') {
+                // if status 200
+                alert('You are Logged-In!');
+                window.location.href = 'personalinfo.html'
+            } else {
+                alert(`${response_status}` + `gettokensForUser`)
+            }
         }
     }
 };
@@ -46,10 +52,6 @@ async function Get_User_Details_Form(event) {
     // Create a dictionary using form
     let data = Object.fromEntries(formData.entries());
     console.log("form dictionary--------:", data)
-
-    // Storing The Password in MyNameSpace object For Future Use
-    PasswordNamespace.password = data.password
-    console.log("user password", MyNamespace.password)
 
     // SEND A API REQUEST TO CREATE A USER
     let apiUrl = 'https://osamaaslam.pythonanywhere.com/api/auth/get-api-user-id-for-user/';

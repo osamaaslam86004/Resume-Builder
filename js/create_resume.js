@@ -26,6 +26,7 @@ var checkCookie = function () {
 window.setInterval(checkCookie, 5000); // run every 5 sec
 
 document.addEventListener('DOMContentLoaded', () => {
+
     document.getElementById('submit-btn-review').addEventListener('click', e => {
         e.preventDefault();
         e.target.disabled = true;

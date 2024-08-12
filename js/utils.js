@@ -1,9 +1,4 @@
 // utils.js
-
-var PasswordNamespace = {
-    password: "",
-}
-
 const MyNamespace = {
 
     getPersonalInfoForm: function () {
@@ -320,10 +315,8 @@ const MyNamespace = {
         // Prepare the data object
         let data = {
             email: userData.email,
-            password: PasswordNamespace.password
+            password: 'doe1122334455!'
         };
-
-        console.log('data before token request', data)
 
         // Create the Request parameters
         let apiUrl = 'https://osamaaslam.pythonanywhere.com/api/auth/token/';
