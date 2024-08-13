@@ -327,6 +327,13 @@ page[size="A4"] {
     background-color: #4caf50;
     text-align: center;
     color: white;
+    /* filter: drop-shadow(10px 10px 15px #000000) hue-rotate(90deg); */
+}
+
+.skill progress {
+    /* overflow: auto;
+    resize: both; */
+    filter: drop-shadow(10px 10px 15px #000000) hue-rotate(90deg);
 }
 
 
