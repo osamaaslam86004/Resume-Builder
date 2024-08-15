@@ -1,3 +1,6 @@
+// Initialize Array
+var resumeStorage = []
+
 document.addEventListener('DOMContentLoaded', async function () {
     // Ensure resume is populated before proceeding
     try {
@@ -6,21 +9,36 @@ document.addEventListener('DOMContentLoaded', async function () {
         const tokens_data = MyNamespace.getCookieValue('tokens');
 
         if ((user_data != null) && (user_data != '')) {
-            // Get fresh tokens and then render the resume
-            await MyNamespace.getTokens(user_data);
-            resume = await renderResume(user_data, tokens_data);
+
+            // Check the tokens and then render the resume
+            if ((tokens_data != null) && (tokens_data != '')) {
+
+                resumeStorage = await renderResume(user_data, tokens_data);
+            }
+
         } else {
             window.location.href = 'read_user.html';
             return; // Exit early to prevent further code execution
         }
 
-        // Once resume is populated, proceed with rendering the resume
-        let resumeData = MyNamespace.getCookieValue('resume');
-        if ((resumeData != null) && (resumeData !== '')) {
-            renderResumeHelper(resumeData);
+        if ((resumeStorage != null) && (resumeStorage != '')) {
+
+            let id = 0; let resume_index = 0;
+            resumeStorage.forEach((resume, index) => {
+
+                if (resume.id > id) {
+                    id = resume.id
+                    resume_index = index
+                }
+            });
+
+            // Render Only Latest Created Resume
+            renderResumeHelper(resumeStorage[resume_index]);
+
+
         } else {
-            console.log('resume Data in eventListener', resume);
-            renderResumeHelper(resume);
+            console.log('resume Data in eventListener', resumeStorage);
+            renderResumeHelper(resumeStorage);
         }
 
     } catch (error) {
@@ -28,28 +46,36 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
+// Get All Resume For User From API
 async function renderResume(user_data, tokens_data) {
-    let resume_data = MyNamespace.getCookieValue('resume');
-    console.log('resumeData from cookie before API call:', resume_data);
 
-    if ((resume_data == null) || (resume_data === '')) {
+    console.log('resumeData:', resumeStorage);
+
+    if ((resumeStorage == null) || (resumeStorage == '')) {
         // Call Backend API to Get data for user's Resume
         let data = await getAllResumeForUser(user_data, tokens_data);
         if (data) {
-            // Create the Resume Cookie
-            MyNamespace.resumeCookie(data);
+
+            // Create the Resume Storage
+            resumeDataStorage(data);
         }
         return data; // Return the fetched resume data
+
+    } else if (resumeStorage) {
+
+        console.log('resumeStorage already exist:', resumeStorage);
+        return;
+
     } else {
         window.location.href = 'personalinfo.html';
     }
 }
 
-
+// Call API To Collect Data 
 async function getAllResumeForUser(user_data, tokens_data) {
 
     // Create the Request parameters
-    const apiUrl = 'https://osamaaslam.pythonanywhere.com/resume/api/get-personal-info-data/9';
+    const apiUrl = `https://osamaaslam.pythonanywhere.com/resume/get-personal-info-data-for-user/?user_id=${user_data.id}`;
     let requestOptions = {
         method: 'GET',
         headers: {
@@ -79,7 +105,7 @@ async function getAllResumeForUser(user_data, tokens_data) {
             }
         }
         let data = await response.json();
-        // console.log('response data in Submit form', data)
+        console.log('response data in Submit form', data)
         return data
     }
     catch (error) {
@@ -87,22 +113,38 @@ async function getAllResumeForUser(user_data, tokens_data) {
     };
 }
 
+// Store Resume data From API in variable resumeStorage
+function resumeDataStorage(data) {
 
+    // Check if data contains only one object
+    if (data.length === 1) {
 
-function getskillLevel(skillLevel) {
-    if (skillLevel === 'Beginner') {
-        return '25%'
-    } else if (skillLevel === 'Intermediate') {
-        return '50%'
-    } else if (skillLevel === 'Advanced') {
-        return '75%'
-    } else if (skillLevel === 'Expert') {
-        return '100%'
+        resumeStorage = data[0];
+
     } else {
-        return '0%'
+
+        for (resume of data) {
+            resumeStorage.push(resume);
+        }
     }
 }
 
+// Convert Skill Levels to Percentage
+function getskillLevel(skillLevel) {
+    if (skillLevel === 'Beginner') {
+        return '25'
+    } else if (skillLevel === 'Intermediate') {
+        return '50'
+    } else if (skillLevel === 'Advanced') {
+        return '75'
+    } else if (skillLevel === 'Expert') {
+        return '100'
+    } else {
+        return '0'
+    }
+}
+
+// Get URL path name
 function geturlPath(urlString) {
 
     // Create a new URL object
@@ -113,7 +155,7 @@ function geturlPath(urlString) {
     return path
 }
 
-
+// Render the Template by Inserting the Resume Data
 function renderResumeHelper(resumeData) {
     // console.log('resumeData inside Helper', resumeData)
 
@@ -181,7 +223,9 @@ function renderResumeHelper(resumeData) {
             let skillLevel = getskillLevel(skill.skill_level);
             let progressBar = document.getElementById('progress-bar');
             // Set the Width and innerHTML To Percentage
-            progressBar.style.width = skillLevel;
+            // progressBar.style.width = skillLevel;
+            // progressBar.innerHTML = skillLevel
+            progressBar.value = skillLevel;
             progressBar.innerHTML = skillLevel
 
         }

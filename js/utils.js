@@ -360,14 +360,23 @@ const MyNamespace = {
     },
 
     resumeCookie: function (data) {
-        // console.log('data in cookie', data)
+        console.log('data in cookie', data)
 
-        // Store the JSON response in a cookie
-        let resumeCookieValue = encodeURIComponent(JSON.stringify(data));
-        // console.log('resumeCookieValue', resumeCookieValue)
-        document.cookie = `resume=${resumeCookieValue}; path=/; max-age=3600000; SameSite=Strict`;
-        // console.log(document.cookie)
+        // Check if data contains only one object
+        if (data.length === 1) {
+            let resumeCookieValue = encodeURIComponent(JSON.stringify(data[0]));
+            document.cookie = `resume=${resumeCookieValue}; path=/; max-age=3600000; SameSite=Strict`;
+        } else {
+            // Store each object in a separate cookie
+            console.log('data type of', typeof (data))
+
+            for (resume of data) {
+                let resumeCookieValue = encodeURIComponent(JSON.stringify(resume));
+                document.cookie = `resume_${resume.id}=${resumeCookieValue}; path=/; max-age=3600000; SameSite=Strict`;
+            }
+        }
     },
+
 
     getCookieValue: function (name) {
         // Get all cookies as a single string
@@ -458,7 +467,7 @@ const MyNamespace = {
     getAllResumesForLoggedInUser: async function (user_id, tokens_data) {
 
         // Create the Request parameters
-        const apiUrl = `https://osamaaslam.pythonanywhere.com/resume/get-personal-info-data-for-user/?=${user_id}`;
+        const apiUrl = `https://osamaaslam.pythonanywhere.com/resume/get-personal-info-data-for-user/?user_id=${user_id}`;
         let requestOptions = {
             method: 'GET',
             headers: {
