@@ -33,6 +33,7 @@
 .demo-section-crud-user .crud-user-form .form-group .email_help {
     font-size: 18px;
     transform-style: preserve-3d;
+    color: white !important;
 
 }
 

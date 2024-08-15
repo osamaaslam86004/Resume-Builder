@@ -26,18 +26,15 @@
 .demo-section-crud-user .d-form .text-d {
     font-size: 72px;
     font-weight: bold;
-    color: #333;
+    color: white;
     text-shadow: 2px 2px 0 #ccc, 4px 4px 0 #999;
     transform-style: preserve-3d;
 }
 
 
 .demo-section-crud-user .d-form-form {
-
     height: 350px;
     width: 750px;
-
-
 }
 
 .d-form-form .form-group input {
@@ -50,9 +47,6 @@
     font-size: larger;
 }
 
-
-
-
 .d-form-form .form-group label {
     font-size: 24px;
     font-weight: bold;
@@ -62,19 +56,12 @@
     perspective: 1000px;
 }
 
-/* .d-form-form .is-staff-check label {
-    font-size: large;
-    font-weight: bold;
-    margin-left: 18px;
-}
-
-.d-form-form .is-staff-check input {
-    width: 18px;
-    height: 18px;
-} */
-
 .crud-user-form .form_button {
     width: 75%;
     margin-bottom: 50px;
 
+}
+
+.d-form-form .crud-user-form .form-group small {
+    color: white !important;
 }
