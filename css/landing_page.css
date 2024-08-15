@@ -48,6 +48,7 @@
     justify-content: flex-end;
     padding: 20px 50px;
     z-index: 2;
+    /* border: 2px solid red; */
 }
 
 .custom-nav .navbar-nav .nav-link {
@@ -58,6 +59,78 @@
 }
 
 
+.nav-item-li {
+    padding: 0;
+    margin: 0;
+    width: 100px;
+    /* border: 2px solid red; */
+}
+
+.nav-item-li a {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+
+.g-container {
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 20px auto;
+}
+
+.m-btn {
+    position: relative;
+    flex: 0 0 180px;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 24px;
+    transition: 0.2s all;
+    box-sizing: border-box;
+    color: #fff;
+    margin-right: 160px;
+    margin-bottom: 20px;
+}
+
+.s-irregularDoubleLineMove:hover {
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.s-irregularDoubleLineMove::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: #fff;
+    transition: 0.2s all;
+}
+
+.s-irregularDoubleLineMove:hover::before {
+    left: 0;
+    width: 100%;
+}
+
+.s-irregularDoubleLineMove::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 1px;
+    background-color: #fff;
+    transition: 0.2s width;
+}
+
+.s-irregularDoubleLineMove:hover::after {
+    right: 0;
+    width: 100%;
+}
 
 
 .hero-content {
