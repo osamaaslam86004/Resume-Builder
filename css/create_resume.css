@@ -440,10 +440,17 @@
 }
 
 .review-list {
-    /* list-style: none; */
     padding: 0;
     margin: 0;
-    /* padding: 1rem; */
     border-bottom: 1px solid #ccc;
-    /* border-bottom: none; */
+}
+
+
+.button-container .submit-btn {
+    background-color: #FFFF80;
+    color: #FFAF00;
+}
+
+.button-container .submit-btn:hover {
+    background-color: #F9E400;
 }
