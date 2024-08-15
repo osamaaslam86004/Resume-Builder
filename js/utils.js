@@ -476,7 +476,7 @@ const MyNamespace = {
                 e.message = data
                 throw e
             }
-            console.log('response data in Submit form', data)
+            console.log('response data', data)
             return data
         }
         catch (error) {

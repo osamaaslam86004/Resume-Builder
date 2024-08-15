@@ -4,7 +4,7 @@ const tokens_cookieValue = MyNamespace.getCookieValue('tokens');
 // Ensure the DOM is fully loaded before attaching event listeners
 document.addEventListener('DOMContentLoaded', function (e) {
 
-    // Attach event listener to the "Build Resume" link
+    // Attach event listener to the "Get Resume" link
     let build_resume = document.getElementById('get-resume-template');
     build_resume.addEventListener('click', buildResume);
 
@@ -36,7 +36,8 @@ async function buildResume(event) {
             if (((tokens_cookieValue != null) && (tokens_cookieValue != ''))) {
 
                 //  Call The API To List All Resumes For User
-                let response = await MyNamespace.getAllResumesForLoggedInUser(userData_cookieValue.id, tokens_cookieValue);
+                let response = await MyNamespace.getAllResumesForLoggedInUser(userData_cookieValue.id,
+                    tokens_cookieValue);
                 try {
                     if ((response != null) && (response != '')) {
                         window.location.href = 'template.html'
