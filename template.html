@@ -173,8 +173,11 @@
                         <div class="skill" id="skill">
                             <p id="skill-text">User-Centric Thinking</p>
                             <div class="progress-container" id="progress-container">
-                                <!-- <div class="progress-bar" id="progress-bar">10%</div> -->
-                                <progress max="100" value="40" id="progress-bar">40%</progress>
+                                <div class="progress-bar" id="progress-bar">10%</div>
+
+                                <!-- html2pdf render only HTML4 -->
+                                <!-- <progress> is in HTML5-->
+                                <!-- <progress max="100" value="40" id="progress-bar">40%</progress> -->
                             </div>
                         </div>
                     </div>
@@ -266,20 +269,30 @@
 
                     <div class="publications-container">
                         <div class="publications-template-container">
-                            <div class="publication-title" id="publication-title"><strong>Art Director</strong></div>
+
+                            <!-- Title -->
+                            <div class="publication-title" id="publication-title">
+                                <strong>Art Director</strong>
+                            </div>
+
+                            <!-- Journal Name & Year -->
                             <div class="journal-date">
 
                                 <div class="publication-journal">
                                     <p id="publication-journal">PLOS</p>
                                 </div>
+
                                 <div class="publication-year">
                                     <p id="publication-year">2024</p>
                                 </div>
                             </div>
 
+                            <!-- Author Name -->
                             <div class="publication-name">
                                 <p id="publication-name">Author</p>
                             </div>
+
+                            <!-- Publication URL -->
                             <div class="publication-url">
                                 <a href="personalinfo.html" id="publication-url">Project Url</a>
                             </div>
@@ -316,13 +329,17 @@
         document.getElementById('download-pdf').addEventListener('click', () => {
             const element = document.querySelector('.container'); // Select the container with the resume content
 
-            const options = {
-                margin: 1,
+            var opt = {
+                margin: [10, 10, 10, 10], // top, left, bottom, right (in mm)
                 filename: 'resume.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
+                html2canvas: { scale: 8, logging: true, dpi: 192, letterRendering: true },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            }
+
+            html2pdf().from(document.querySelector('.container')).set(opt).save();
+
+
 
             html2pdf().from(element).set(options).save();
         });

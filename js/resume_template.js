@@ -132,15 +132,15 @@ function resumeDataStorage(data) {
 // Convert Skill Levels to Percentage
 function getskillLevel(skillLevel) {
     if (skillLevel === 'Beginner') {
-        return '25'
+        return '25%'
     } else if (skillLevel === 'Intermediate') {
-        return '50'
+        return '50%'
     } else if (skillLevel === 'Advanced') {
-        return '75'
+        return '75%'
     } else if (skillLevel === 'Expert') {
-        return '100'
+        return '100%'
     } else {
-        return '0'
+        return '0%'
     }
 }
 
@@ -223,10 +223,10 @@ function renderResumeHelper(resumeData) {
             let skillLevel = getskillLevel(skill.skill_level);
             let progressBar = document.getElementById('progress-bar');
             // Set the Width and innerHTML To Percentage
-            // progressBar.style.width = skillLevel;
-            // progressBar.innerHTML = skillLevel
-            progressBar.value = skillLevel;
+            progressBar.style.width = skillLevel;
             progressBar.innerHTML = skillLevel
+            // progressBar.value = skillLevel;
+            // progressBar.innerHTML = skillLevel
 
         }
         else {
@@ -240,10 +240,10 @@ function renderResumeHelper(resumeData) {
             progressBarClone.id = `progress-bar+${index}`
 
             let skillLevelClone = getskillLevel(skill.skill_level);
-            // progressBarClone.style.width = skillLevelClone
-            // progressBarClone.innerHTML = skillLevelClone
-            progressBarClone.value = skillLevelClone
+            progressBarClone.style.width = skillLevelClone
             progressBarClone.innerHTML = skillLevelClone
+            // progressBarClone.value = skillLevelClone
+            // progressBarClone.innerHTML = skillLevelClone
 
             document.getElementById('skills-container').append(skillClone)
         }
