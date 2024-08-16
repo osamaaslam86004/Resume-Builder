@@ -240,8 +240,10 @@ function renderResumeHelper(resumeData) {
             progressBarClone.id = `progress-bar+${index}`
 
             let skillLevelClone = getskillLevel(skill.skill_level);
-            progressBarClone.style.width = skillLevelClone
-            progressBarClone.innerHTML = skillLevelClone
+            // progressBarClone.style.width = skillLevelClone
+            // progressBarClone.innerHTML = skillLevelClone
+            progressBar.value = skillLevelClone
+            progressBar.innerHTML = skillLevelClone
 
             document.getElementById('skills-container').append(skillClone)
         }

@@ -35,18 +35,24 @@
     <section class="main-section">
 
         <section class="container" id="container">
-            <div class="col-4 left-container">
 
-                <div class="person-image">
-                    <img src="images/Founder, CEO & Lead Designer.jpg">
-                </div>
+            <!-- Right Container -->
+            <section class="col-4 left-container">
 
-                <div class="name-occupation">
-                    <p id="first-middle-last-name">ISMQAN WALTON ISMQAN WALTON ISMQAN WALTON ISMQAN WALTON</p>
-                    <p>INDUSTRIAL DESIGNER</p>
-                </div>
+                <!-- Profile Image With Name and Occupation -->
+                <section>
+                    <div class="person-image">
+                        <img src="images/Founder, CEO & Lead Designer.jpg">
+                    </div>
 
-                <div class="contact">
+                    <div class="name-occupation">
+                        <p id="first-middle-last-name">ISMQAN WALTON ISMQAN WALTON ISMQAN WALTON ISMQAN WALTON</p>
+                        <p>INDUSTRIAL DESIGNER</p>
+                    </div>
+                </section>
+
+                <!-- Contact Section -->
+                <section class="contact">
                     <div class="contact-heading-container">
                         <h5>Contact</h5>
                     </div>
@@ -73,9 +79,10 @@
                         </div>
 
                     </div>
-                </div>
+                </section>
 
-                <div class="social-media-contact">
+                <!-- Social Media Section -->
+                <section class="social-media-contact">
                     <div class="facebook">
                         <div class="facebook-png">
                             <img src="images/facebook.png">
@@ -116,12 +123,15 @@
                             <p id="twitter-id-path-name">osamaaslam86004</p>
                         </div>
                     </div>
-                </div>
+                </section>
 
-            </div>
+            </section>
 
-            <div class="col-8 right-container">
-                <div class="section">
+            <!-- Right Container -->
+            <section class="col-8 right-container">
+
+                <!-- Programming Area section -->
+                <section class="section">
                     <h5>PROGRAMMING LANGUAGES</h5>
 
                     <div class="programming-language-container">
@@ -150,10 +160,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
 
-
-                <div class="section">
+                <!-- Skill And Skill-Level Section -->
+                <section class="section">
                     <div class="skill-and-divider">
                         <h5>SKILLS</h5>
                     </div>
@@ -168,10 +178,10 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </section>
 
-
-                <div class="section">
+                <!-- Work Experience section -->
+                <section class="section">
                     <div class="experience-and-divider">
                         <h5>WORK EXPERIENCE</h5>
 
@@ -205,10 +215,10 @@
                             amet
                             lorem ipsum dolor sit.</p>
                     </div>
-                </div>
+                </section>
 
-
-                <div class="section">
+                <!-- Projects Section -->
+                <section class="section">
                     <div class="projects-and-divider">
                         <h5>Projects</h5>
                     </div>
@@ -231,23 +241,24 @@
                         </div>
                     </div>
 
-                </div>
+                </section>
 
-                <div class="section">
+                <!-- Education Detail Section -->
+                <section class="section">
                     <div class="education-and-divider">
                         <h5>EDUCATION</h5>
                     </div>
 
                     <div class="education-container">
-                        <div class="education-template-container">
+                        <div class="education-template-container" id="education-template-container">
                             <p id="education-degree-name-start-end-date">Master Degree | University Name | 2020 - 2021
                             </p>
                         </div>
                     </div>
-                </div>
+                </section>
 
-
-                <div class="section">
+                <!-- Publications Sections -->
+                <section class="section">
                     <div class="publications-and-divider">
                         <h5>PUBLICATIONS</h5>
                     </div>
@@ -274,10 +285,11 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </section>
+            </section>
         </section>
 
+        <!-- Download Button Section -->
         <section class="button-section">
 
             <button class="button" id="download-pdf">
@@ -292,8 +304,14 @@
 
 
     <!-- <script src="https://chatbolt.ai/widget/9095ded2-f9b8-407d-ab9c-92d431917343.js"></script> -->
+
+    <!-- Custom Js file -->
     <script src="js/resume_template.js"></script>
+
+    <!-- CDN For Downloading The Resume -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
+    <!-- Inline Script To Download Resume -->
     <script>
         document.getElementById('download-pdf').addEventListener('click', () => {
             const element = document.querySelector('.container'); // Select the container with the resume content
