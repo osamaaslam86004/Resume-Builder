@@ -12,12 +12,21 @@ document.addEventListener('DOMContentLoaded', function (e) {
     form.addEventListener('submit', e => {
         Submit_User_Creation_Form(e);
     });
+
+    // Event For Closing The Alert
+    let alertButton = document.getElementById('alert-button')
+    alertButton.addEventListener('click', event => {
+        MyNamespace.closeAlert(event);
+    });
 });
 
 
 async function Submit_User_Creation_Form(e) {
     e.preventDefault();  // Prevent the default action if necessary
     e.target.disabled = true;
+
+    // Show the loading spinner
+    document.getElementById('loader').style.display = 'block';
 
     // Create the form instance
     let formData = new FormData(e.target);
@@ -44,21 +53,30 @@ async function Submit_User_Creation_Form(e) {
 
         if (!response.ok) {
             throw new Error(response.status);
+
         } else {
             // Store the JSON response in a cookie
             MyNamespace.userCredndialsCookie(json_response_data);
-            alert('Your Account is created, Please Log-In');
-            window.location.href = 'read_user.html';
+            // Render Alert
+            MyNamespace.alertInfoFunction('Your Account is created, Please Log-In');
+            // window.location.href = 'read_user.html';
         }
     } catch (error) {
+
         console.error(error.message);
+
         if (error.message = '400') {
-            alert("Already Have Account! Please Login")
-            window.location.href = "read_user.html"
+            MyNamespace.alertInfoFunction("Already Have Account! Please Login")
+            // window.location.href = "read_user.html"
+
         } else {
-            alert("Something went wrong! Try Again")
+            MyNamespace.alertInfoFunction("Something went wrong! Try Again")
         }
     } finally {
         e.target.disabled = false;
+
+        // Hide the loading spinner after processing
+        document.getElementById('loader').style.display = 'none';
+
     }
 };

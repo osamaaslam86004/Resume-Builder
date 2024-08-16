@@ -414,12 +414,14 @@ const MyNamespace = {
 
         MyNamespace.check_user_LoggedIn(event).then(([user, tokens]) => {
 
-            if ((user !== null) && (tokens != null)) {
-                alert("You are already logged-in")
-                // window.location.href = 'personalinfo.html'
+            if ((user != null) && (tokens != null)) {
+                // Render the alert message
+                MyNamespace.alertInfoFunction('You are already logged-in');
+                window.location.href = 'personalinfo.html'
             } else {
                 console.log(`Cookie with name "userCredentials" not found.`);
-                alert("Please Log-In")
+                // Render the alert message
+                MyNamespace.alertInfoFunction('Please Log-In');
                 window.location.href = 'read_user.html'
             }
         });
@@ -492,6 +494,20 @@ const MyNamespace = {
             console.error(error);
             throw error
         };
+    },
+
+    alertInfoFunction: function (message) {
+        console.log("Alert message function called with message:", message);
+        let alert = document.getElementById('alert_info');
+        alert.querySelector('#alert-info-strong').textContent = message;
+        // alert.innerHTML = message;
+        alert.style.display = 'block';
+    },
+
+    closeAlert: function (event) {
+        event.preventDefault();
+        let alert = document.getElementById('alert_info');
+        alert.style.display = 'none';
     },
 };
 

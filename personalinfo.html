@@ -5,848 +5,898 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Information Form</title>
+
+    <!-- Bootstrap v4.0 CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom Stylesheet -->
     <link rel="stylesheet" href="css/create_resume.css">
 </head>
 
 <body>
 
-    <!-- Sticky Progress bar  -->
-    <div class="fixed-top progress-container">
-        <div class="progress-bar" id="progress-bar">0%</div>
-    </div>
-
-    <div class="form-container">
-
-        <!-- Sticky Track Progress -->
-        <div class="fixed-top tracking" id="tracking">
-            <div class="col-16 col-md-12 hh-grayBox pt45 pb20">
-
-                <div class="row" id="tracking-personal-info">
-                    <div class="order-tracking">
-                        <div> <span class="is-complete"></span></div>
-                        <div class="order-tracking-p">
-                            <span>Personal-Info</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row" id="tracking-overview">
-                    <div class="order-tracking">
-                        <div> <span class="is-complete"></span></div>
-                        <div class="order-tracking-p">
-                            <span>Overview</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row" id="tracking-education">
-                    <div class="order-tracking">
-                        <div> <span class="is-complete"></span></div>
-                        <div class="order-tracking-p">
-                            <span>Education</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row" id="tracking-job">
-                    <div class="order-tracking">
-                        <div> <span class="is-complete"></span></div>
-                        <div class="order-tracking-p">
-                            <span>Work History</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row" id="tracking-accomplishment">
-                    <div class="order-tracking">
-                        <div> <span class="is-complete"></span></div>
-                        <div class="order-tracking-p">
-                            <span>Accomplishments</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row" id="tracking-skill">
-                    <div class="order-tracking">
-                        <div> <span class="is-complete"></span></div>
-                        <div class="order-tracking-p">
-                            <span>Skills</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row" id="tracking-programming-area">
-                    <div class="order-tracking">
-                        <div> <span class="is-complete"></span></div>
-                        <div class="order-tracking-p">
-                            <span>Programming Area & Languages</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row" id="tracking-projects">
-                    <div class="order-tracking">
-                        <div> <span class="is-complete"></span></div>
-                        <div class="order-tracking-p">
-                            <span>Projects</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row" id="tracking-publications">
-                    <div class="order-tracking">
-                        <div> <span class="is-complete"></span></div>
-                        <div class="order-tracking-p">
-                            <span>Publications</span>
-                        </div>
-                    </div>
-                </div>
+    <section>
+        <!-- Loading Spinner -->
+        <div class="fixed-top loader custom-loader" id="loader" style="display: none;">
+            <div class="wrapper">
+                <div class="text">Creating...</div>
+                <div class="box"></div>
             </div>
         </div>
 
-        <form id="personal-info-form" class="personal-info-form">
-            <div class="personal-info-container" id="personal-info-container">
-                <div>
-                    <h1>What’s the best way for employers to contact you?</h1>
-                    <p>We suggest including an email and phone number.</p>
-                </div>
-
-                <div class="form-row">
-
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="first_name">First Name</label>
-                            <input type="text" name="first_name" id="first_name" minlength="3" required maxlength="50">
-                            <ul class="input-requirements" id="input-requirements">
-                                <li>At least 3 characters long</li>
-                                <li>Must only contain letters and numbers (no special characters)</li>
-                            </ul>
-                            <span class="error-message"></span>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="middle_name">Middle Name</label>
-                            <input type="text" id="middle_name" name="middle_name" autocomplete="family-name">
-                            <span class="error-message"></span>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="last_name">Last Name</label>
-                            <input type="text" id="last_name" name="last_name" minlength="3" required maxlength="50">
-                            <ul class="input-requirements" id="input-requirements">
-                                <li>At least 3 characters long</li>
-                                <li>Must only contain letters and numbers (no special characters)</li>
-                            </ul>
-                            <span class="error-message"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="suffix">Suffix</label>
-                        <input type="text" id="suffix" name="suffix" placeholder="e.g. PhD" maxlength="25">
-                        <span class="error-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="locality">Locality</label>
-                        <input type="text" id="locality" name="locality" placeholder="e.g. Boston" maxlength="15">
-                        <span class="error-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="region">Region</label>
-                        <input type="text" id="region" name="region" placeholder="e.g. MA or Italy" maxlength="15">
-                        <span class="error-message"></span>
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Title</label>
-                        <input type="text" id="title" name="title" placeholder="e.g. Developer" maxlength="25">
-                        <span class="error-message"></span>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="@gmail.com" autocomplete="email"
-                                required maxlength="50">
-                            <ul class="input-requirements" id="input-requirements">
-                                <li>example@example.com</li>
-                            </ul>
-                            <span class="error-message"></span>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="twittername">Twitter Handle</label>
-                            <input type="url" id="twittername" name="twittername" placeholder="@username" required
-                                maxlength="25">
-                            <ul class="input-requirements" id="input-requirements">
-                                <li>At least 3 characters long</li>
-                                <li>Letters, Numbers, Period, Hyphen, Underscore</li>
-                            </ul>
-                            <span class="error-message"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="linkedin">Linkedin</label>
-                            <input type="url" id="linkedin" name="linkedin" required maxlength="25">
-                            <ul class="input-requirements" id="input-requirements">
-                                <li>At least 3 characters long</li>
-                                <li>Letters, Numbers, Period, Hyphen, Underscore</li>
-                            </ul>
-                            <span class="error-message"></span>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="facebook">Facebook</label>
-                            <input type="url" id="facebook" name="facebook" required maxlength="25">
-                            <ul class="input-requirements" id="input-requirements">
-                                <li>At least 3 characters long</li>
-                                <li>Letters, Numbers, Period, Hyphen, Underscore</li>
-                            </ul>
-                            <span class="error-message"></span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="github">Github</label>
-                            <input type="url" id="github" name="github" required maxlength="25">
-                            <ul class="input-requirements" id="input-requirements">
-                                <li>At least 3 characters long</li>
-                                <li>Letters, Numbers, Period, Hyphen, Underscore</li>
-                            </ul>
-                            <span class="error-message"></span>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="site">Site</label>
-                            <input type="url" id="site" name="site" required maxlength="100">
-                            <ul class="input-requirements" id="input-requirements">
-                                <li>https://www.example.com/</li>
-                                <li>https://www.example.com/?id=1</li>
-                            </ul>
-                            <span class="error-message"></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Overview Form -->
-            <div class="overview-container" id="overview-container">
-                <div class="info-tips-container" id="info-tips-container">
-                    <!--OffsetParent(info-tips-container) of show-tips, heading-h1, tips-container-->
-
-                    <!-- Show Tips -->
-                    <div class="show-tips" id="show-tips">
-                        <p>
-                        <ul>
-                            <h4>Expert Insights</h4>
-                            Short cut: If you don’t have time to tailor your entire resume for a specific job
-                            application, at least change this section so that it matches the opportunity.
-
-                            <li>Write a career overview so that hiring managers can immediately see the value that you
-                                bring.</li>
-                            <li>Not sure how to write this? Choose one of our examples and edit it to match your
-                                background.</li>
-                            <li>
-                                Make your summary sound stronger by writing it in the present tense. Focus on what you
-                                can do for a company, rather than what you did in the past.</li>
-                        </ul>
-                        </p>
-                    </div>
-
-                    <div class="heading-h1">
-                        <h1>Overview</h1>
-                    </div>
-
-                    <!-- Tips container -->
-                    <div class="tips-container" id="tips-container">
-                        <!-- FirstElementChild of tips-container is svg-container -->
-                        <div class="svg-container">
-                            <button id="svg-button" class="svg-button" type="button"><svg
-                                    xmlns="http://www.w3.org/2000/svg" fill="yellow" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
-                                </svg></button>
-                        </div>
-                        <!-- lastElementChild -->
-                        <div class="tips" id="tips">
-                            <button class="btn btn-primary tips-button" id="tips-button">
-                                <p>Tips</p>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-row" id="overview-form-container">
-                    <div class="form-group">
-                        <!-- <label for="overview_text">Overview of You</label> -->
-                        <label for="text">Overview of You</label>
-                        <textarea type="text" id="text" name="text" rows="4" required maxlength="200"></textarea>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Education Form -->
-            <div class="education-container" id="education-container">
-                <div class="info-tips-container" id="info-tips-container">
-                    <div class="education-container-info">
-                        <h1>Tell us about your education</h1>
-                        <p>Enter your education experience so far, even if you are a current student or did not
-                            graduate.
-                        </p>
-                    </div>
-
-                    <!-- Show Tips -->
-                    <div class="show-tips" id="show-tips">
-                        <p>
-                        <ul>
-                            <h4>Expert Insights</h4>
-                            <p>Ageism in the workforce still exists. If your degree is over ten years old, consider
-                                removing the date.</p>
-
-                            <li>List the schools you've attended and any degrees you've earned, starting with your most
-                                recent.</li>
-                            <li>List high school only if you didn't go to college.</li>
-                            <li>Coursework is optional. List relevant courses if you don't have much work experience.
-                            </li>
-                            <li> Certifications and training programs should be included in a separate section.</li>
-                        </ul>
-                        </p>
-                    </div>
-
-                    <!-- Tips container -->
-                    <div class="tips-container" id="tips-container">
-                        <div class="svg-container">
-                            <button id="svg-button" class="svg-button" type="button"><svg
-                                    xmlns="http://www.w3.org/2000/svg" fill="yellow" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
-                                </svg></button>
-                        </div>
-                        <div class="tips" id="tips">
-                            <button class="btn btn-primary tips-button" id="tips-button">
-                                <p>Tips</p>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div id="education-forms-container">
-                    <!-- Education Form Template -->
-                    <div id="education-form-template">
-                        <div class="form-row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="name">School Name</label>
-                                    <input type="text" id="name" name="name" class="form-control" maxlength="250">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="location">Location</label>
-                                    <input type="text" id="location" name="location" class="form-control"
-                                        placeholder="e.g. Boston" maxlength="250">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="schoolurl">School URL</label>
-                                    <input type="url" id="schoolurl" name="schoolurl" class="form-control"
-                                        maxlength="250">
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="degree">Degree</label>
-                                    <input type="text" id="degree" name="degree" class="form-control"
-                                        placeholder="e.g. BSc Computer Science">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="education_start_date">Start Date</label>
-                                    <input type="date" id="education_start_date" name="education_start_date"
-                                        class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="education_end_date">End Date</label>
-                                    <input type="date" id="education_end_date" name="education_end_date"
-                                        class="form-control" required>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="education_description">Description</label>
-                                    <textarea id="education_description" name="description" class="form-control"
-                                        rows="4" placeholder="Enter details about your education"></textarea>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="add-form-button-container">
-                    <button class="btn btn-primary add-education-form" id="add-education-form"><svg
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-
-            <!-- Job Form -->
-            <div class="job-container" id="job-container">
-                <div class="info-tips-container" id="info-tips-container">
-                    <div class="job-container-info">
-                        <h3>Now, let’s fill out your</h3>
-                        <h1>Work history</h1>
-                        <h4>Here’s what you need to know:</h4>
-                        <p>Employers scan your resume to see if you're a match.
-                            We'll suggest bullet points that make a great impression.</p>
-                    </div>
-
-                    <!-- Show Tips -->
-                    <div class="show-tips" id="show-tips">
-                        <p>
-                        <h4> Expert Insights</h4>
-                        <p> Hiring managers will scan this information looking for career progression, i.e.- how long
-                            you've stayed in each job, your growth and promotions, whether you've worked for similar
-                            companies and whether you have gaps in employment.</p>
-                        <ul>
-                            <li>Enter basic information about your previous jobs so employers can see where you've
-                                worked.
-                            </li>
-                            <li> Don't abbreviate job titles. Using your full title looks more professional and is
-                                easier
-                                for managers to understand.</li>
-                            <li> Include start and end dates for each position. Leaving off dates will make employers
-                                think
-                                you're hiding something.</li>
-                            <li> Can't remember your exact start date or job title? Don't worry - enter your best guess
-                                and
-                                come back to edit it later, once you've confirmed the information.</li>
-                        </ul>
-
-                        </p>
-                    </div>
-
-
-                    <!-- Tips container -->
-                    <div class="tips-container" id="tips-container">
-                        <div class="svg-container">
-                            <button id="svg-button" class="svg-button" type="button"><svg
-                                    xmlns="http://www.w3.org/2000/svg" fill="yellow" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
-                                </svg></button>
-                        </div>
-                        <div class="tips" id="tips">
-                            <button class="btn btn-primary tips-button" id="tips-button">
-                                <p>Tips</p>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="form-row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="company">Company</label>
-                            <input type="text" id="company" name="company" class="form-control" maxlength="250"
-                                required>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="companyurl">Company URL</label>
-                            <input type="url" id="companyurl" name="companyurl" class="form-control" maxlength="200">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="location">Location</label>
-                            <input type="text" id="location" name="location" class="form-control"
-                                placeholder="e.g. Boston" maxlength="250">
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="title"> Job Title</label>
-                            <input type="text" id="title" name="title" class="form-control" placeholder="e.g. Developer"
-                                maxlength="250">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="job_description">Description</label>
-                            <textarea id="job_description" name="description" class="form-control" rows="4"
-                                placeholder="Enter details about your job" maxlength="250"></textarea>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="job_start_date">Start Date</label>
-                            <input type="date" id="job_start_date" name="job_start_date" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="job_end_date">End Date</label>
-                            <input type="date" id="job_end_date" name="job_end_date" class="form-control" required>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="col">
-                        <div class="form-group">
-                            <div class="label-input-inline">
-                                <label for="is_current">Current Job</label>
-                                <input type="checkbox" id="is_current" name="is_current"
-                                    class="form-control checkbox-input-custom">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <div class="label-input-inline">
-                                <label for="is_public">Public Job</label>
-                                <input type="checkbox" id="is_public" name="is_public"
-                                    class="form-control checkbox-input-custom">
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="formFileLg" class="form-label">Image</label>
-                            <!-- bootstrap class for large file input is form-control-lg -->
-                            <input class="form-control form-control-lg" id="formFileLg" type="file" name="image">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Job Accomplishment -->
-            <div class="job-accomplishment-container" id="job-accomplishment-container">
-                <div class="job-accomplishment-container-info">
-                    <h3>Now, let’s fill out your</h3>
-                    <h1>Job Accomplishment</h1>
-                    <p>We'll suggest bullet points that make a great impression.</p>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="job_accomplishment">Accomplishments</label>
-                        <textarea type="text" id="job_accomplishment" name="job_accomplishment" rows="4" required
-                            maxlength="100"></textarea>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Skill and Skill Level Form -->
-            <div class="skill-and-skill-level-container" id="skill-and-skill-level-container">
-                <div class="info-tips-container" id="info-tips-container">
-                    <div class="skill-and-skill-level-container-info">
-                        <h3>Now, let’s fill out your</h3>
-                        <h1>Skill and Skill Level</h1>
-                        <p>Skills would you like to highlight? We'll suggest skills that make a great impression.
-                        </p>
-                    </div>
-
-
-                    <!-- Show Tips -->
-                    <div class="show-tips" id="show-tips">
-                        <p>
-                        <h4>Expert Insights</h4>
-                        <p>The gatekeeper sorting resumes that come in is not always the direct hiring manger, so keep
-                            your resume language at a middle school level. This ensures that everyone in the hiring
-                            process can easily digest it.</p>
-
-                        <ul>
-                            <li>Highlight 6-8 skills that are most relevant to your desired job.</li>
-                            <li> If you don’t have much experience, consider listing soft skills like "Fast learner",
-                                "Highly
-                                dependable" or "Excellent attention to detail".</li>
-
-                            <li>Use short bulleted phrases – 3 words or less. No need to use a period (.) at the end.
-                            </li>
-                            <li>Not sure which skills to include? Emphasize the skills that are required in the job
-                                description.</li>
-                        </ul>
-                        </p>
-                    </div>
-
-
-                    <!-- Tips container -->
-                    <div class="tips-container" id="tips-container">
-                        <div class="svg-container">
-                            <button id="svg-button" class="svg-button" type="button"><svg
-                                    xmlns="http://www.w3.org/2000/svg" fill="yellow" viewBox="0 0 24 24"
-                                    stroke-width="1.5" stroke="currentColor" class="size-6">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
-                                </svg></button>
-                        </div>
-                        <div class="tips" id="tips">
-                            <button class="btn btn-primary tips-button" id="tips-button">
-                                <p>Tips</p>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <div id="skill-forms-container">
-                    <div class="skill-form-template" id="skill-form-template">
-                        <div class="form-row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="text">Skill</label>
-                                    <input type="text" id="text" name="text" class="form-control" required>
-                                </div>
-                            </div>
-
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="skill_level">Skill Level</label>
-                                    <select id="skill_level" name="skill_level" class="form-control" required>
-                                        <option value="">Select Skill Level</option>
-                                        <option value="Beginner">Beginner</option>
-                                        <option value="Intermediate">Intermediate</option>
-                                        <option value="Advanced">Advanced</option>
-                                        <option value="Expert">Expert</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <!-- Add more buton -->
-                <div class="add-form-button-container">
-                    <button class="btn btn-primary add-skill-form" id="add-skill-form">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg>
-                    </button>
-                </div>
-
-            </div>
-
-
-            <!-- Programming Area Form -->
-            <div class="programming-area-and-language-form" id="programming-area-and-language-container">
-                <div class="programming-area-and-language-form-info">
-                    <h3>Now, let’s fill out your</h3>
-                    <h1>Programming Area</h1>
-                    <p>Choose Programming Area and Programming Area Language you like to highlight</p>
-                </div>
-                <div id="programming-area-forms-container">
-                    <div id="programming-area-form-template">
-                        <div class="form-row">
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="programming_area_name">Programming Area</label>
-                                    <select id="programming_area_name" name="programming_area_name" class="form-control"
-                                        required>
-                                        <option value="">Select Programming Area</option>
-                                        <option value="FRONTEND">Frontend</option>
-                                        <option value="BACKEND">Backend</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col">
-                                <div class="form-group">
-                                    <label for="programming_language_name">Programming Language</label>
-                                    <select id="programming_language_name" name="programming_language_name"
-                                        class="form-control" required>
-                                        <option value="">Select Programming Language</option>
-                                        <!-- Options will be dynamically added based on the selected programming area -->
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="add-form-button-container">
-                    <button class="btn btn-primary add-programming-area-form" id="add-programming-area-form">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Projects Form -->
-            <div class="projects-form-container" id="projects-form-container">
-                <div class="progress-form-container-info">
-                    <h3>Now, let’s fill out your</h3>
-                    <h1>Projects</h1>
-                    <p>Choose your projects details you like to highlight</p>
-                </div>
-                <div id="projects-forms-container">
-                    <div id="project-form-template">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="project_name">Project Name</label>
-                                <input type="text" id="project_name" name="project_name" class="form-control" required
-                                    maxlength="100">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="link">Project Link</label>
-                                <input type="url" id="link" name="link" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="short_description">Short Description</label>
-                                <textarea id="short_description" name="short_description" class="form-control" rows="3"
-                                    required maxlength="100"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="long_description">Long Description</label>
-                                <textarea id="long_description" name="long_description" class="form-control"
-                                    rows="5"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="add-form-button-container">
-                    <button class="btn btn-primary add-project-form" id="add-project-form">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-
-            <!-- Publications Form -->
-            <div class="publication-container" id="publication-container">
-                <div class="publication-container-info">
-                    <h3>Now, let’s fill out your</h3>
-                    <h1>Publications</h1>
-                    <p>Choose your publications details you like to highlight</p>
-                </div>
-                <div id="publications-forms-container">
-                    <div id="publication-form-template">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="title">Title</label>
-                                <input type="text" id="title" name="title" class="form-control" required
-                                    maxlength="100">
-                            </div>
-                            <div class="form-group">
-                                <label for="authors">Authors</label>
-                                <textarea id="authors" name="authors" class="form-control" rows="3" required
-                                    maxlength="50"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="journal">Journal</label>
-                                <input type="text" id="journal" name="journal" class="form-control" required
-                                    maxlength="150">
-                            </div>
-                            <div class="form-group">
-                                <label for="year">Year</label>
-                                <input type="number" id="year" name="year" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="link">Publication URL</label>
-                                <input type="url" id="link" name="link" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="add-form-button-container">
-                    <button class="btn btn-primary add-publication-form" id="add-publication-form">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <div class="button-container">
-                <button class="submit-btn" id="submit-btn">Submit</button>
-            </div>
-
-        </form>
-        <!-- Add a review container -->
-        <div class="review-container" id="review-container">
-            <h2>Review and Edit</h2>
-            <!-- <ul id="review-list"></ul> -->
-            <div class="review-list" id="review-list"></div>
-            <button class="btn btn-secondary" id="edit-btn">Edit</button>
-            <button class="btn btn-primary" id="submit-btn-review">Submit</button>
+        <!-- Alert Component-->
+        <div class="alert alert-warning alert-dismissible fade show custom-alert-info" role="alert" id="alert_info"
+            style="display: none;">
+            <strong id="alert-info-strong">Holy guacamole! You should check in on some of those fields below.</strong>
+            <button type="button" class="close" id="alert-button">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-    </div>
+    </section>
+
+    <section>
+        <!-- Sticky Progress bar  -->
+        <div class="fixed-top progress-container">
+            <div class="progress-bar" id="progress-bar">0%</div>
+        </div>
+
+        <div class="form-container">
+
+            <!-- Sticky Track Progress -->
+            <div class="fixed-top tracking" id="tracking">
+                <div class="col-16 col-md-12 hh-grayBox pt45 pb20">
+
+                    <div class="row" id="tracking-personal-info">
+                        <div class="order-tracking">
+                            <div> <span class="is-complete"></span></div>
+                            <div class="order-tracking-p">
+                                <span>Personal-Info</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="tracking-overview">
+                        <div class="order-tracking">
+                            <div> <span class="is-complete"></span></div>
+                            <div class="order-tracking-p">
+                                <span>Overview</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="tracking-education">
+                        <div class="order-tracking">
+                            <div> <span class="is-complete"></span></div>
+                            <div class="order-tracking-p">
+                                <span>Education</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="tracking-job">
+                        <div class="order-tracking">
+                            <div> <span class="is-complete"></span></div>
+                            <div class="order-tracking-p">
+                                <span>Work History</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="tracking-accomplishment">
+                        <div class="order-tracking">
+                            <div> <span class="is-complete"></span></div>
+                            <div class="order-tracking-p">
+                                <span>Accomplishments</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="tracking-skill">
+                        <div class="order-tracking">
+                            <div> <span class="is-complete"></span></div>
+                            <div class="order-tracking-p">
+                                <span>Skills</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="tracking-programming-area">
+                        <div class="order-tracking">
+                            <div> <span class="is-complete"></span></div>
+                            <div class="order-tracking-p">
+                                <span>Programming Area & Languages</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="tracking-projects">
+                        <div class="order-tracking">
+                            <div> <span class="is-complete"></span></div>
+                            <div class="order-tracking-p">
+                                <span>Projects</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" id="tracking-publications">
+                        <div class="order-tracking">
+                            <div> <span class="is-complete"></span></div>
+                            <div class="order-tracking-p">
+                                <span>Publications</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form id="personal-info-form" class="personal-info-form">
+                <div class="personal-info-container" id="personal-info-container">
+                    <div>
+                        <h1>What’s the best way for employers to contact you?</h1>
+                        <p>We suggest including an email and phone number.</p>
+                    </div>
+
+                    <div class="form-row">
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="first_name">First Name</label>
+                                <input type="text" name="first_name" id="first_name" minlength="3" required
+                                    maxlength="50">
+                                <ul class="input-requirements" id="input-requirements">
+                                    <li>At least 3 characters long</li>
+                                    <li>Must only contain letters and numbers (no special characters)</li>
+                                </ul>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="middle_name">Middle Name</label>
+                                <input type="text" id="middle_name" name="middle_name" autocomplete="family-name">
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="last_name">Last Name</label>
+                                <input type="text" id="last_name" name="last_name" minlength="3" required
+                                    maxlength="50">
+                                <ul class="input-requirements" id="input-requirements">
+                                    <li>At least 3 characters long</li>
+                                    <li>Must only contain letters and numbers (no special characters)</li>
+                                </ul>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="suffix">Suffix</label>
+                            <input type="text" id="suffix" name="suffix" placeholder="e.g. PhD" maxlength="25">
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="locality">Locality</label>
+                            <input type="text" id="locality" name="locality" placeholder="e.g. Boston" maxlength="15">
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="region">Region</label>
+                            <input type="text" id="region" name="region" placeholder="e.g. MA or Italy" maxlength="15">
+                            <span class="error-message"></span>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" id="title" name="title" placeholder="e.g. Developer" maxlength="25">
+                            <span class="error-message"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="@gmail.com"
+                                    autocomplete="email" required maxlength="50">
+                                <ul class="input-requirements" id="input-requirements">
+                                    <li>example@example.com</li>
+                                </ul>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="twittername">Twitter Handle</label>
+                                <input type="url" id="twittername" name="twittername" placeholder="@username" required
+                                    maxlength="25">
+                                <ul class="input-requirements" id="input-requirements">
+                                    <li>At least 3 characters long</li>
+                                    <li>Letters, Numbers, Period, Hyphen, Underscore</li>
+                                </ul>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="linkedin">Linkedin</label>
+                                <input type="url" id="linkedin" name="linkedin" required maxlength="25">
+                                <ul class="input-requirements" id="input-requirements">
+                                    <li>At least 3 characters long</li>
+                                    <li>Letters, Numbers, Period, Hyphen, Underscore</li>
+                                </ul>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="facebook">Facebook</label>
+                                <input type="url" id="facebook" name="facebook" required maxlength="25">
+                                <ul class="input-requirements" id="input-requirements">
+                                    <li>At least 3 characters long</li>
+                                    <li>Letters, Numbers, Period, Hyphen, Underscore</li>
+                                </ul>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="github">Github</label>
+                                <input type="url" id="github" name="github" required maxlength="25">
+                                <ul class="input-requirements" id="input-requirements">
+                                    <li>At least 3 characters long</li>
+                                    <li>Letters, Numbers, Period, Hyphen, Underscore</li>
+                                </ul>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="site">Site</label>
+                                <input type="url" id="site" name="site" required maxlength="100">
+                                <ul class="input-requirements" id="input-requirements">
+                                    <li>https://www.example.com/</li>
+                                    <li>https://www.example.com/?id=1</li>
+                                </ul>
+                                <span class="error-message"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overview Form -->
+                <div class="overview-container" id="overview-container">
+                    <div class="info-tips-container" id="info-tips-container">
+                        <!--OffsetParent(info-tips-container) of show-tips, heading-h1, tips-container-->
+
+                        <!-- Show Tips -->
+                        <div class="show-tips" id="show-tips">
+                            <p>
+                            <ul>
+                                <h4>Expert Insights</h4>
+                                Short cut: If you don’t have time to tailor your entire resume for a specific job
+                                application, at least change this section so that it matches the opportunity.
+
+                                <li>Write a career overview so that hiring managers can immediately see the value that
+                                    you
+                                    bring.</li>
+                                <li>Not sure how to write this? Choose one of our examples and edit it to match your
+                                    background.</li>
+                                <li>
+                                    Make your summary sound stronger by writing it in the present tense. Focus on what
+                                    you
+                                    can do for a company, rather than what you did in the past.</li>
+                            </ul>
+                            </p>
+                        </div>
+
+                        <div class="heading-h1">
+                            <h1>Overview</h1>
+                        </div>
+
+                        <!-- Tips container -->
+                        <div class="tips-container" id="tips-container">
+                            <!-- FirstElementChild of tips-container is svg-container -->
+                            <div class="svg-container">
+                                <button id="svg-button" class="svg-button" type="button"><svg
+                                        xmlns="http://www.w3.org/2000/svg" fill="yellow" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                                    </svg></button>
+                            </div>
+                            <!-- lastElementChild -->
+                            <div class="tips" id="tips">
+                                <button class="btn btn-primary tips-button" id="tips-button">
+                                    <p>Tips</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row" id="overview-form-container">
+                        <div class="form-group">
+                            <!-- <label for="overview_text">Overview of You</label> -->
+                            <label for="text">Overview of You</label>
+                            <textarea type="text" id="text" name="text" rows="4" required maxlength="200"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education Form -->
+                <div class="education-container" id="education-container">
+                    <div class="info-tips-container" id="info-tips-container">
+                        <div class="education-container-info">
+                            <h1>Tell us about your education</h1>
+                            <p>Enter your education experience so far, even if you are a current student or did not
+                                graduate.
+                            </p>
+                        </div>
+
+                        <!-- Show Tips -->
+                        <div class="show-tips" id="show-tips">
+                            <p>
+                            <ul>
+                                <h4>Expert Insights</h4>
+                                <p>Ageism in the workforce still exists. If your degree is over ten years old, consider
+                                    removing the date.</p>
+
+                                <li>List the schools you've attended and any degrees you've earned, starting with your
+                                    most
+                                    recent.</li>
+                                <li>List high school only if you didn't go to college.</li>
+                                <li>Coursework is optional. List relevant courses if you don't have much work
+                                    experience.
+                                </li>
+                                <li> Certifications and training programs should be included in a separate section.</li>
+                            </ul>
+                            </p>
+                        </div>
+
+                        <!-- Tips container -->
+                        <div class="tips-container" id="tips-container">
+                            <div class="svg-container">
+                                <button id="svg-button" class="svg-button" type="button"><svg
+                                        xmlns="http://www.w3.org/2000/svg" fill="yellow" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                                    </svg></button>
+                            </div>
+                            <div class="tips" id="tips">
+                                <button class="btn btn-primary tips-button" id="tips-button">
+                                    <p>Tips</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div id="education-forms-container">
+                        <!-- Education Form Template -->
+                        <div id="education-form-template">
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="name">School Name</label>
+                                        <input type="text" id="name" name="name" class="form-control" maxlength="250">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="location">Location</label>
+                                        <input type="text" id="location" name="location" class="form-control"
+                                            placeholder="e.g. Boston" maxlength="250">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="schoolurl">School URL</label>
+                                        <input type="url" id="schoolurl" name="schoolurl" class="form-control"
+                                            maxlength="250">
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="degree">Degree</label>
+                                        <input type="text" id="degree" name="degree" class="form-control"
+                                            placeholder="e.g. BSc Computer Science">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="education_start_date">Start Date</label>
+                                        <input type="date" id="education_start_date" name="education_start_date"
+                                            class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="education_end_date">End Date</label>
+                                        <input type="date" id="education_end_date" name="education_end_date"
+                                            class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="education_description">Description</label>
+                                        <textarea id="education_description" name="description" class="form-control"
+                                            rows="4" placeholder="Enter details about your education"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="add-form-button-container">
+                        <button class="btn btn-primary add-education-form" id="add-education-form"><svg
+                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- Job Form -->
+                <div class="job-container" id="job-container">
+                    <div class="info-tips-container" id="info-tips-container">
+                        <div class="job-container-info">
+                            <h3>Now, let’s fill out your</h3>
+                            <h1>Work history</h1>
+                            <h4>Here’s what you need to know:</h4>
+                            <p>Employers scan your resume to see if you're a match.
+                                We'll suggest bullet points that make a great impression.</p>
+                        </div>
+
+                        <!-- Show Tips -->
+                        <div class="show-tips" id="show-tips">
+                            <p>
+                            <h4> Expert Insights</h4>
+                            <p> Hiring managers will scan this information looking for career progression, i.e.- how
+                                long
+                                you've stayed in each job, your growth and promotions, whether you've worked for similar
+                                companies and whether you have gaps in employment.</p>
+                            <ul>
+                                <li>Enter basic information about your previous jobs so employers can see where you've
+                                    worked.
+                                </li>
+                                <li> Don't abbreviate job titles. Using your full title looks more professional and is
+                                    easier
+                                    for managers to understand.</li>
+                                <li> Include start and end dates for each position. Leaving off dates will make
+                                    employers
+                                    think
+                                    you're hiding something.</li>
+                                <li> Can't remember your exact start date or job title? Don't worry - enter your best
+                                    guess
+                                    and
+                                    come back to edit it later, once you've confirmed the information.</li>
+                            </ul>
+
+                            </p>
+                        </div>
+
+
+                        <!-- Tips container -->
+                        <div class="tips-container" id="tips-container">
+                            <div class="svg-container">
+                                <button id="svg-button" class="svg-button" type="button"><svg
+                                        xmlns="http://www.w3.org/2000/svg" fill="yellow" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                                    </svg></button>
+                            </div>
+                            <div class="tips" id="tips">
+                                <button class="btn btn-primary tips-button" id="tips-button">
+                                    <p>Tips</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="company">Company</label>
+                                <input type="text" id="company" name="company" class="form-control" maxlength="250"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="companyurl">Company URL</label>
+                                <input type="url" id="companyurl" name="companyurl" class="form-control"
+                                    maxlength="200">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <input type="text" id="location" name="location" class="form-control"
+                                    placeholder="e.g. Boston" maxlength="250">
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="title"> Job Title</label>
+                                <input type="text" id="title" name="title" class="form-control"
+                                    placeholder="e.g. Developer" maxlength="250">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="job_description">Description</label>
+                                <textarea id="job_description" name="description" class="form-control" rows="4"
+                                    placeholder="Enter details about your job" maxlength="250"></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="job_start_date">Start Date</label>
+                                <input type="date" id="job_start_date" name="job_start_date" class="form-control"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="job_end_date">End Date</label>
+                                <input type="date" id="job_end_date" name="job_end_date" class="form-control" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <div class="label-input-inline">
+                                    <label for="is_current">Current Job</label>
+                                    <input type="checkbox" id="is_current" name="is_current"
+                                        class="form-control checkbox-input-custom">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <div class="label-input-inline">
+                                    <label for="is_public">Public Job</label>
+                                    <input type="checkbox" id="is_public" name="is_public"
+                                        class="form-control checkbox-input-custom">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="formFileLg" class="form-label">Image</label>
+                                <!-- bootstrap class for large file input is form-control-lg -->
+                                <input class="form-control form-control-lg" id="formFileLg" type="file" name="image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Job Accomplishment -->
+                <div class="job-accomplishment-container" id="job-accomplishment-container">
+                    <div class="job-accomplishment-container-info">
+                        <h3>Now, let’s fill out your</h3>
+                        <h1>Job Accomplishment</h1>
+                        <p>We'll suggest bullet points that make a great impression.</p>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="job_accomplishment">Accomplishments</label>
+                            <textarea type="text" id="job_accomplishment" name="job_accomplishment" rows="4" required
+                                maxlength="100"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Skill and Skill Level Form -->
+                <div class="skill-and-skill-level-container" id="skill-and-skill-level-container">
+                    <div class="info-tips-container" id="info-tips-container">
+                        <div class="skill-and-skill-level-container-info">
+                            <h3>Now, let’s fill out your</h3>
+                            <h1>Skill and Skill Level</h1>
+                            <p>Skills would you like to highlight? We'll suggest skills that make a great impression.
+                            </p>
+                        </div>
+
+
+                        <!-- Show Tips -->
+                        <div class="show-tips" id="show-tips">
+                            <p>
+                            <h4>Expert Insights</h4>
+                            <p>The gatekeeper sorting resumes that come in is not always the direct hiring manger, so
+                                keep
+                                your resume language at a middle school level. This ensures that everyone in the hiring
+                                process can easily digest it.</p>
+
+                            <ul>
+                                <li>Highlight 6-8 skills that are most relevant to your desired job.</li>
+                                <li> If you don’t have much experience, consider listing soft skills like "Fast
+                                    learner",
+                                    "Highly
+                                    dependable" or "Excellent attention to detail".</li>
+
+                                <li>Use short bulleted phrases – 3 words or less. No need to use a period (.) at the
+                                    end.
+                                </li>
+                                <li>Not sure which skills to include? Emphasize the skills that are required in the job
+                                    description.</li>
+                            </ul>
+                            </p>
+                        </div>
+
+
+                        <!-- Tips container -->
+                        <div class="tips-container" id="tips-container">
+                            <div class="svg-container">
+                                <button id="svg-button" class="svg-button" type="button"><svg
+                                        xmlns="http://www.w3.org/2000/svg" fill="yellow" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 18v-5.25m0 0a6.01 6.01 0 0 0 1.5-.189m-1.5.189a6.01 6.01 0 0 1-1.5-.189m3.75 7.478a12.06 12.06 0 0 1-4.5 0m3.75 2.383a14.406 14.406 0 0 1-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 1 0-7.517 0c.85.493 1.509 1.333 1.509 2.316V18" />
+                                    </svg></button>
+                            </div>
+                            <div class="tips" id="tips">
+                                <button class="btn btn-primary tips-button" id="tips-button">
+                                    <p>Tips</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="skill-forms-container">
+                        <div class="skill-form-template" id="skill-form-template">
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="text">Skill</label>
+                                        <input type="text" id="text" name="text" class="form-control" required>
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="skill_level">Skill Level</label>
+                                        <select id="skill_level" name="skill_level" class="form-control" required>
+                                            <option value="">Select Skill Level</option>
+                                            <option value="Beginner">Beginner</option>
+                                            <option value="Intermediate">Intermediate</option>
+                                            <option value="Advanced">Advanced</option>
+                                            <option value="Expert">Expert</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- Add more buton -->
+                    <div class="add-form-button-container">
+                        <button class="btn btn-primary add-skill-form" id="add-skill-form">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                        </button>
+                    </div>
+
+                </div>
+
+
+                <!-- Programming Area Form -->
+                <div class="programming-area-and-language-form" id="programming-area-and-language-container">
+                    <div class="programming-area-and-language-form-info">
+                        <h3>Now, let’s fill out your</h3>
+                        <h1>Programming Area</h1>
+                        <p>Choose Programming Area and Programming Area Language you like to highlight</p>
+                    </div>
+                    <div id="programming-area-forms-container">
+                        <div id="programming-area-form-template">
+                            <div class="form-row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="programming_area_name">Programming Area</label>
+                                        <select id="programming_area_name" name="programming_area_name"
+                                            class="form-control" required>
+                                            <option value="">Select Programming Area</option>
+                                            <option value="FRONTEND">Frontend</option>
+                                            <option value="BACKEND">Backend</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        <label for="programming_language_name">Programming Language</label>
+                                        <select id="programming_language_name" name="programming_language_name"
+                                            class="form-control" required>
+                                            <option value="">Select Programming Language</option>
+                                            <!-- Options will be dynamically added based on the selected programming area -->
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="add-form-button-container">
+                        <button class="btn btn-primary add-programming-area-form" id="add-programming-area-form">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Projects Form -->
+                <div class="projects-form-container" id="projects-form-container">
+                    <div class="progress-form-container-info">
+                        <h3>Now, let’s fill out your</h3>
+                        <h1>Projects</h1>
+                        <p>Choose your projects details you like to highlight</p>
+                    </div>
+                    <div id="projects-forms-container">
+                        <div id="project-form-template">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="project_name">Project Name</label>
+                                    <input type="text" id="project_name" name="project_name" class="form-control"
+                                        required maxlength="100">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="link">Project Link</label>
+                                    <input type="url" id="link" name="link" class="form-control">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="short_description">Short Description</label>
+                                    <textarea id="short_description" name="short_description" class="form-control"
+                                        rows="3" required maxlength="100"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="long_description">Long Description</label>
+                                    <textarea id="long_description" name="long_description" class="form-control"
+                                        rows="5"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="add-form-button-container">
+                        <button class="btn btn-primary add-project-form" id="add-project-form">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- Publications Form -->
+                <div class="publication-container" id="publication-container">
+                    <div class="publication-container-info">
+                        <h3>Now, let’s fill out your</h3>
+                        <h1>Publications</h1>
+                        <p>Choose your publications details you like to highlight</p>
+                    </div>
+                    <div id="publications-forms-container">
+                        <div id="publication-form-template">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="title">Title</label>
+                                    <input type="text" id="title" name="title" class="form-control" required
+                                        maxlength="100">
+                                </div>
+                                <div class="form-group">
+                                    <label for="authors">Authors</label>
+                                    <textarea id="authors" name="authors" class="form-control" rows="3" required
+                                        maxlength="50"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="journal">Journal</label>
+                                    <input type="text" id="journal" name="journal" class="form-control" required
+                                        maxlength="150">
+                                </div>
+                                <div class="form-group">
+                                    <label for="year">Year</label>
+                                    <input type="number" id="year" name="year" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="link">Publication URL</label>
+                                    <input type="url" id="link" name="link" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="add-form-button-container">
+                        <button class="btn btn-primary add-publication-form" id="add-publication-form">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="button-container">
+                    <button class="submit-btn" id="submit-btn">Submit</button>
+                </div>
+
+            </form>
+            <!-- Add a review container -->
+            <div class="review-container" id="review-container">
+                <h2>Review and Edit</h2>
+                <!-- <ul id="review-list"></ul> -->
+                <div class="review-list" id="review-list"></div>
+                <button class="btn btn-secondary" id="edit-btn">Edit</button>
+                <button class="btn btn-primary" id="submit-btn-review">Submit</button>
+            </div>
+        </div>
+    </section>
 
     <!-- 'lodash' is Library To Compare Objects -->
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+
+    <!-- Bootstrap scripts -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
 
     <!-- Initialize the NameSpace Properties and Methods -->
     <script src="js/utils.js"></script>

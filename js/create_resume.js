@@ -2,6 +2,14 @@
 var last_userCredentials_value = MyNamespace.getCookieValue('userCredential');
 var last_tokens_value = MyNamespace.getCookieValue('tokens');
 
+if (((last_userCredentials_value == null) && (last_userCredentials_value == '')) ||
+    (((last_tokens_value == null) || (last_tokens_value == '')))) {
+    window.location.href = 'read_user.html'
+}
+
+// Initialize a flag for Redirection
+var alertClosed = false;
+
 // Periodic Polling 
 // To Check Cookies Value Are Not Changed
 var checkCookie = function () {
@@ -25,7 +33,12 @@ var checkCookie = function () {
 }();
 window.setInterval(checkCookie, 5000); // run every 5 sec
 
+
 document.addEventListener('DOMContentLoaded', () => {
+
+    // Event For Closing The Alert
+    let alertButton = document.getElementById('alert-button')
+    alertButton.addEventListener('click', redirect_On_Alert_Close);
 
     document.getElementById('submit-btn-review').addEventListener('click', e => {
         e.preventDefault();
@@ -39,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
         submitPersonalInfoForm(getformData, last_userCredentials_value, last_tokens_value)
             .then(data => {
                 // console.log('response data in Submit form', data)
-                window.location.href = 'template.html'
+                MyNamespace.alertInfoFunction('Resume Is Created Successfully!')
             })
             .catch(error => {
                 console.error('Error details here:', error);
@@ -51,10 +64,20 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+function redirect_On_Alert_Close(event, alertClosed) {
+    MyNamespace.closeAlert(event);
 
+    alertClosed = true;
+    // Redirect to the template page after alert is closed
+    window.location.href = 'template.html';
+}
 
 function submitPersonalInfoForm(getformData, userData, tokensData) {
     return new Promise((resolve, reject) => {
+
+        // Show the loading spinner
+        document.getElementById('loader').style.display = 'block';
+
         // Prepare the data object
         getformData['user_id'] = userData.id
         console.log('user id in form', getformData['user_id'])
@@ -102,6 +125,10 @@ function submitPersonalInfoForm(getformData, userData, tokensData) {
             .catch(error => {
                 console.error('Error:', error);
                 reject(error);
+            })
+            .finally(() => {
+                // Hide the loading spinner after processing
+                document.getElementById('loader').style.display = 'none';
             });
     });
 }

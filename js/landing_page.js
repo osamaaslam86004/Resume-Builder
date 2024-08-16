@@ -21,12 +21,23 @@ document.addEventListener('DOMContentLoaded', function (e) {
     // Attach event listener to the "Sign-up" link
     let sign_up = document.getElementById('post-request-crud-user')
     sign_up.addEventListener('click', openCreateUserPage);
+
+
+    let alertButton = document.getElementById('alert-button')
+    alertButton.addEventListener('click', event => {
+        MyNamespace.closeAlert(event);
+    });
+
 });
 
 
 
 async function buildResume(event) {
     event.preventDefault();
+
+    // Show the loading spinner
+    document.getElementById('loader').style.display = 'block';
+
     if ((userData_cookieValue == null) || (userData_cookieValue == '')) {
         window.location.href = 'create_user.html';
 
@@ -42,7 +53,8 @@ async function buildResume(event) {
                     if ((response != null) && (response != '')) {
                         window.location.href = 'template.html'
                     } else {
-                        alert('You Have Not Created Resume, Please Create First!')
+                        // Render the alert message
+                        MyNamespace.alertInfoFunction('You Have Not Created Resume, Please Create First!');
                     }
                 }
                 catch (e) {
@@ -52,9 +64,14 @@ async function buildResume(event) {
                         console.log(e.name, e.message)
                     }
                 }
+                finally {
+                    // Hide the loading spinner after processing
+                    document.getElementById('loader').style.display = 'none';
+                }
 
             } else {
-                alert("Not Logged-In, Please Logged-In First!")
+                // Render the alert message
+                MyNamespace.alertInfoFunction('Not Logged-In, Please Logged-In First!');
                 window.location.href = 'read_user.html';
             }
         }
@@ -72,8 +89,11 @@ function openCreateUserPage(event) {
             return MyNamespace.getTokens(userData_cookieValue)
                 .then(response_status_code => {
                     if (response_status_code != '200') {
-                        alert('Something went wrong, Please try again!')
+
+                        // Render the alert message
+                        MyNamespace.alertInfoFunction('Something went wrong, Please try again!');
                         window.location.href = 'landing_page.html';
+
                     } else {
                         // Redirect user to Create resume
                         window.location.href = 'personalinfo.html';

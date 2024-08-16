@@ -12,6 +12,12 @@ document.addEventListener('DOMContentLoaded', function (e) {
         Create_User(event);
     });
 
+    // Event For Closing The Alert
+    let alertButton = document.getElementById('alert-button')
+    alertButton.addEventListener('click', event => {
+        MyNamespace.closeAlert(event);
+    });
+
     // Since userCredentials is present, get the tokens and redirect the user
     // to Create Resume Builder page
     const userCredentials = MyNamespace.getCookieValue('userCredential');
@@ -20,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 });
 
 async function getTokensForUser(userCredentials) {
+
     // Append EventListener to the Submit button
     if ((userCredentials != null) && (userCredentials != '')) {
 
@@ -27,16 +34,26 @@ async function getTokensForUser(userCredentials) {
 
         if ((tokenData == null) && (tokenData == '')) {
 
+            // Show the loading spinner
+            document.getElementById('loader').style.display = 'block';
+
             let response_status = await MyNamespace.getTokens(userCredentials);
+
             if (response_status == '404') {
-                alert('You have not created account!')
+                MyNamespace.alertInfoFunction('You have not created account!')
                 window.location.href = 'create_user.html'
+
             } else if (response_status == '200') {
                 // if status 200
-                alert('You are Logged-In!');
+
+                // Hide the loading spinner after processing
+                document.getElementById('loader').style.display = 'none';
+
+                MyNamespace.alertInfoFunction('You are Logged-In!');
                 window.location.href = 'personalinfo.html'
+
             } else {
-                alert(`${response_status}` + `gettokensForUser`)
+                MyNamespace.alertInfoFunction(`${response_status}` + `gettokensForUser`)
             }
         }
     }
@@ -46,6 +63,9 @@ async function getTokensForUser(userCredentials) {
 async function Get_User_Details_Form(event) {
     event.preventDefault();
     event.target.disabled = true;
+
+    // Show the loading spinner
+    document.getElementById('loader').style.display = 'block';
 
     // Create the form instance
     let formData = new FormData(event.target);
@@ -77,18 +97,27 @@ async function Get_User_Details_Form(event) {
             MyNamespace.userCredndialsCookie(json_response_data);
             // Create 'tokens' cookie
             await MyNamespace.getTokens(json_response_data);
-            alert('You are Log-In!');
+
+            // Render Alert
+            MyNamespace.alertInfoFunction('You are Log-In!');
             window.location.href = 'personalinfo.html';
         }
     } catch (error) {
         if (error.message == '404') {
-            alert('You have not created account!')
+
+            MyNamespace.alertInfoFunction('You have not created account!')
             window.location.href = 'create_user.html'
+
         } else if (error.message == '400') {
-            alert('Enter Correct Credentials!')
+            MyNamespace.alertInfoFunction('Enter Correct Credentials!')
+
         } else {
-            alert(`${error.message}` + 'something went wrong! Plaese try again')
+            MyNamespace.alertInfoFunction(`${error.message}` + 'something went wrong! Plaese try again')
         }
+    }
+    finally {
+        // Hide the loading spinner after processing
+        document.getElementById('loader').style.display = 'none';
     }
 };
 
@@ -100,8 +129,9 @@ function Create_User(event) {
 
     if ((userData == null) || (userData == '')) {
         window.location.href = 'create_user.html'
+
     } else {
-        alert('Your Have Already Created An Account!')
+        MyNamespace.alertInfoFunction('Your Have Already Created An Account!')
     }
 };
 
@@ -112,10 +142,3 @@ function Create_User(event) {
 //     username: 'John Doe',
 //     password: 'doe1122334455!'
 // };
-
-// Redirect the user back to the referring page
-// if (document.referrer) {
-//     window.location.href = document.referrer;
-// } else {
-//     console.error('No referrer found');
-// }

@@ -21,7 +21,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="http://127.0.0.1:5500/landing_page.html">Training</a>
+        <a class="navbar-brand" href="https://resume-builder-integrated-with-resume-api.vercel.app/">Training</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -41,11 +41,30 @@
     </nav>
 
 
+    <section>
+        <!-- Loading Spinner -->
+        <div class="loader custom-loader" id="loader" style="display: none;">
+            <div class="wrapper">
+                <div class="text">Getting Data</div>
+                <div class="box"></div>
+            </div>
+        </div>
+
+        <!-- Alert Component-->
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert_info"
+            style="display: none;">
+            <strong id="alert-info-strong">Holy guacamole! You should check in on some of those fields below.</strong>
+            <button type="button" class="close" id="alert-button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </section>
+
     <section class="demo-section-crud-user">
 
         <div class="d-form">
 
-            <div class="text-d">User Details</div>
+            <div class="text-d">Please Login!</div>
         </div>
 
         <div class="d-form-form">
