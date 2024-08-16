@@ -31,7 +31,7 @@ Resume Builder is a front-end application that allows users to create and downlo
 To get started with the Resume Builder, clone the repository and open `index.html` in your browser. Ensure the backend [Resume API](https://github.com/osamaaslam86004/Resume-API-Backend.git) is running to enable API calls.
 
 ```bash
-git clone https://github.com/yourusername/Resume-Builder.git
+git clone https://github.com/osamaaslam86004/Resume-Builder.git
 cd Resume-Builder
 ```
 
