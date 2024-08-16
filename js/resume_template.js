@@ -242,8 +242,8 @@ function renderResumeHelper(resumeData) {
             let skillLevelClone = getskillLevel(skill.skill_level);
             // progressBarClone.style.width = skillLevelClone
             // progressBarClone.innerHTML = skillLevelClone
-            progressBar.value = skillLevelClone
-            progressBar.innerHTML = skillLevelClone
+            progressBarClone.value = skillLevelClone
+            progressBarClone.innerHTML = skillLevelClone
 
             document.getElementById('skills-container').append(skillClone)
         }
@@ -318,7 +318,7 @@ function renderResumeHelper(resumeData) {
             educationDetailsClone.innerHTML = education.degree
                 + '   |  ' + education.name + '   |  ' + education.education_start_date + '  -  ' + education.education_end_date;
 
-            document.getElementById('education-template-container').append(educationClone)
+            document.getElementById('education-container').append(educationClone)
             educationDetailsClone = null;
         }
     });
