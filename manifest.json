@@ -1,8 +1,13 @@
 {
     "name": "Resume Builder",
     "short_name": "Resume Builder",
-    "start_url": "/",
+    "start_url": "/index.html",
     "display": "standalone",
+    "display_override": [
+        "fullscreen",
+        "standalone",
+        "minimal-ui"
+    ],
     "description": "A web-based resume builder integrated with a resume API",
     "lang": "en",
     "dir": "auto",
@@ -11,33 +16,94 @@
     "orientation": "any",
     "icons": [
         {
-            "src": "https://resume-builder-integrated-with-resume-api.vercel.app/icon-512.png",
-            "sizes": "512x512",
-            "type": "image/png",
-            "purpose": "maskable"
+            "src": "/images/utube.png",
+            "sizes": "48x48",
+            "type": "image/png"
         },
         {
-            "src": "https://resume-builder-integrated-with-resume-api.vercel.app/icon-192.png",
-            "sizes": "192x192",
-            "type": "image/png",
-            "purpose": "any"
+            "src": "/images/Web Developer, Operations Director.jpg",
+            "sizes": "512x512",
+            "type": "image/jpg"
+        },
+        {
+            "src": "/images/twitter.svg",
+            "sizes": "32x32",
+            "type": "image/svg"
+        },
+        {
+            "src": "/images/resume_builder_logo.jpeg",
+            "sizes": "1024x1024",
+            "type": "image/jpeg"
+        },
+        {
+            "src": "/images/linkedin.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/gmail.png",
+            "sizes": "48x48",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/github.svg",
+            "sizes": "24x28",
+            "type": "image/svg"
+        },
+        {
+            "src": "/images/Founder, CEO & Lead Designer.jpg",
+            "sizes": "512x512",
+            "type": "image/jpg"
+        },
+        {
+            "src": "/images/facebook.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "/images/calendar_icon.svg",
+            "sizes": "24x24",
+            "type": "image/svg"
+        },
+        {
+            "src": "/images/identity card.svg",
+            "sizes": "24x24",
+            "type": "image/svg"
+        },
+        {
+            "src": "/images/House address.svg",
+            "sizes": "24x24",
+            "type": "image/svg"
         }
     ],
     "screenshots": [
         {
-            "src": "https://resume-builder-integrated-with-resume-api.vercel.app/screenshot-1.png",
-            "sizes": "2880x1800",
+            "src": "/images/screenshot-1.png",
+            "sizes": "1920x1080",
             "type": "image/png",
-            "description": "A screenshot of the home page"
+            "description": "A screenshot of the home page",
+            "form_factor": "wide"
+        },
+        {
+            "src": "/images/screenshot-2.png",
+            "sizes": "1920x1080",
+            "type": "image/png",
+            "description": "A screenshot of the login page"
         }
     ],
     "related_applications": [],
     "prefer_related_applications": false,
     "shortcuts": [
         {
-            "name": "Create a new resume",
-            "url": "/create-resume",
-            "description": "Create a new resume with our easy-to-use builder"
+            "name": "Login User",
+            "short_name": "Login",
+            "url": "/read_user.html",
+            "description": "Login To Create Resume",
+            "icon": {
+                "src": "/images/login.png",
+                "sizes": "96x96",
+                "type": "image/png"
+            }
         }
     ],
     "protocol_handlers": [
@@ -52,20 +118,6 @@
         {
             "protocol": "sms",
             "url": "/sms?uri=%s"
-        }
-    ],
-    "display_override": [
-        {
-            "mode": "standalone",
-            "url": "/standalone"
-        },
-        {
-            "mode": "minimal-ui",
-            "url": "/minimal-ui"
-        },
-        {
-            "mode": "fullscreen",
-            "url": "/fullscreen"
         }
     ]
 }

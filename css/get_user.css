@@ -73,7 +73,11 @@
 
 /* End ===>Loading Spinner */
 
-
+.login-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
 
 .demo-section-crud-user {
     height: 550px;
