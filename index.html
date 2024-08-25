@@ -21,8 +21,6 @@
 
     <!-- For .png/jpeg file -->
     <link rel="icon" href="images/resume_builder_logo.jpeg" type="image/jpeg">
-    <script>navigator.serviceWorker.register("service-worker.js")</script>
-    <link rel="manifest" href="manifest.json" />
 </head>
 
 <body>
@@ -388,18 +386,6 @@
     <!-- Custom script for Landing Page -->
     <script src="js/landing_page.js"></script>
 
-    <!-- Service Worker Registered-->
-    <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('service-worker.js')
-                .then(registration => {
-                    console.log('Service worker registered:', registration);
-                })
-                .catch(error => {
-                    console.error('Service worker registration failed:', error);
-                });
-        }
-    </script>
 </body>
 
 </html>
