@@ -808,6 +808,140 @@ body {
     color: #333;
 }
 
+
+
+/* Download Section Start */
+.download-section {
+    background-color: beige;
+    width: 100%;
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    max-width: 700px;
+    background: linear-gradient(to top right, #1d2740, #4b506e);
+    padding: 30px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    text-align: center;
+}
+
+.small-text {
+    color: #6cacf3;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.title {
+    color: #f5f5f5;
+    font-size: 30px;
+    line-height: 1.3;
+    margin-bottom: 15px;
+}
+
+.desc {
+    color: #b0b4c1;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #5a9ded;
+    box-shadow: 0 4px 6px rgba(90, 157, 237, 0.4);
+    color: #fff;
+}
+
+.button:last-child {
+    background-color: #ffffff;
+    color: #000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button .icon svg,
+.button .icon img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+.button-text span:first-child {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.button-text span:last-child {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.google span:first-child {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.apple span:first-child {
+    color: rgba(81, 87, 108, 0.8);
+}
+
+.google span:last-child {
+    color: #ffffff;
+}
+
+.apple span:last-child {
+    color: #000000;
+}
+
+.button:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .card {
+        padding: 25px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .title {
+        font-size: 26px;
+    }
+
+    .desc {
+        font-size: 14px;
+    }
+}
+
+/* Download Section End */
+
+
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
 
