@@ -422,7 +422,7 @@ body {
 
 .transition-to-build .build-container h3 {
     color: white;
-    font-size: 1.5rem;
+    /* font-size: 1.5rem; */
 }
 
 /* Hero Section */
@@ -744,6 +744,7 @@ body {
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+    /* border: 1px solid red; */
 }
 
 .why-choose-us .main-container .circle-and-details-container .wrapper-circle .circle {
@@ -751,20 +752,19 @@ body {
     background-color: orangered;
     height: 50px;
     width: 50px;
+    margin-top: 20px;
 }
 
 .why-choose-us .main-container .details {
     height: 250px;
     width: 390px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: baseline;
     margin-left: 10px;
+    /* border: 1px solid blue; */
 }
 
-.why-choose-us .main-container .details h3 {
+.why-choose-us .main-container .circle-and-details-container .details h3 {
     color: white;
+    /* border: 1px solid red; */
 }
 
 .why-choose-us .main-container .details p {
@@ -976,7 +976,7 @@ body {
 
 .meet-the-team h3 {
     color: #fff;
-    font-size: 2.5rem;
+    /* font-size: 2.5rem; */
     margin-bottom: 0.5rem;
 }
 
@@ -1024,12 +1024,12 @@ body {
 
 .details h3 {
     margin-bottom: 0.5rem;
-    font-size: 1.75rem;
+    /* font-size: 1.75rem; */
 }
 
 .details h5 {
     font-style: italic;
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
     color: #cccccc;
     margin-bottom: 1rem;
 }
@@ -1042,9 +1042,9 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .meet-the-team h3 {
+    /* .meet-the-team h3 {
         font-size: 2rem;
-    }
+    } */
 
     .meet-the-team p {
         font-size: 1rem;
