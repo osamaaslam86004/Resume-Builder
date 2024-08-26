@@ -1,5 +1,5 @@
 /* START ====> Custom Scroll Bar */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 10px;
 }
 
@@ -15,7 +15,7 @@
 
 ::-webkit-scrollbar-thumb:hover {
     background: #b30000;
-}
+} */
 
 /* END ====> Custom Scroll Bar */
 
